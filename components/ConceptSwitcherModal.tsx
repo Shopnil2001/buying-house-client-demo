@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { X, ArrowUpRight, Sparkles, Check, Compass, ShieldCheck, Zap, Leaf } from "lucide-react";
+import { X, ArrowUpRight, Sparkles, Check, Compass, ShieldCheck, Zap, Leaf, Factory } from "lucide-react";
 import { playTactileClick } from "./SoundEffects";
 
 interface ConceptSwitcherModalProps {
@@ -12,8 +12,36 @@ interface ConceptSwitcherModalProps {
 
 const CONCEPTS_DETAIL = [
   {
-    id: "heritage",
+    id: "interloop",
     num: "01",
+    name: "Interloop Studio",
+    route: "/interloop",
+    icon: Factory,
+    targetAudience: "Global Retailers, Multi-Category Brands (Nike, Target, Adidas, H&M, Levi's)",
+    palette: ["#00E5C8 (Cyan)", "#FF6B2B (Amber)", "#050912 (Obsidian)", "#D4AF37 (Gold)"],
+    typography: "Inter + Space Grotesk + JetBrains Mono",
+    signatureAnimation: "Continuous Scroll-Driven Physics Fabric Ribbon that floats, twists, and unfurls to reveal text dynamically, plus interactive Atelier Pinboard Gallery.",
+    badge: "10-Section Powerhouse",
+    color: "from-cyan-500 via-teal-500 to-blue-600",
+    borderGlow: "group-hover:border-cyan-400/50",
+  },
+  {
+    id: "sustainable",
+    num: "02",
+    name: "Sustainable & ESG",
+    route: "/sustainable",
+    icon: Leaf,
+    targetAudience: "Eco-Conscious Labels, Circular Fashion Brands & European ESG Mandate Buyers",
+    palette: ["#2D5033 (Sage Leaf)", "#152819 (Forest)", "#FAF8F3 (Cotton Cream)", "#E5DDD0 (Sand)"],
+    typography: "Fraunces + Outfit / Epilogue",
+    signatureAnimation: "Generative Organic Cotton Boll & Floating Fiber Physics Particle Field with dynamic live water/carbon impact savings counter.",
+    badge: "LEED Platinum & GOTS",
+    color: "from-emerald-400 to-teal-600",
+    borderGlow: "group-hover:border-emerald-500/50",
+  },
+  {
+    id: "heritage",
+    num: "03",
     name: "Heritage & Craft",
     route: "/heritage",
     icon: Compass,
@@ -27,7 +55,7 @@ const CONCEPTS_DETAIL = [
   },
   {
     id: "precision",
-    num: "02",
+    num: "04",
     name: "Precision & QC",
     route: "/precision",
     icon: ShieldCheck,
@@ -41,7 +69,7 @@ const CONCEPTS_DETAIL = [
   },
   {
     id: "momentum",
-    num: "03",
+    num: "05",
     name: "Momentum & Velocity",
     route: "/momentum",
     icon: Zap,
@@ -52,20 +80,6 @@ const CONCEPTS_DETAIL = [
     badge: "21-Day Fast Track",
     color: "from-orange-500 to-amber-500",
     borderGlow: "group-hover:border-orange-500/50",
-  },
-  {
-    id: "sustainable",
-    num: "04",
-    name: "Sustainable & ESG",
-    route: "/sustainable",
-    icon: Leaf,
-    targetAudience: "Eco-Conscious Labels, Circular Fashion Brands & European ESG Mandate Buyers",
-    palette: ["#2D5033 (Sage Leaf)", "#152819 (Forest)", "#FAF8F3 (Cotton Cream)", "#E5DDD0 (Sand)"],
-    typography: "Fraunces + Outfit / Epilogue",
-    signatureAnimation: "Generative Organic Cotton Boll & Floating Fiber Physics Particle Field with dynamic live water/carbon impact savings counter.",
-    badge: "LEED Platinum & GOTS",
-    color: "from-emerald-400 to-teal-600",
-    borderGlow: "group-hover:border-emerald-500/50",
   },
 ];
 
@@ -83,13 +97,13 @@ export default function ConceptSwitcherModal({ isOpen, onClose }: ConceptSwitche
           <div>
             <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-cyan-400 mb-1">
               <Sparkles className="w-3.5 h-3.5" />
-              Creative Direction Comparison Matrix
+              Creative Direction & Enterprise Showcase Matrix
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-white font-serif">
-              Select a Landing Page Concept
+              Select a Page Experience
             </h2>
             <p className="text-xs sm:text-sm text-stone-400 mt-1">
-              Each direction presents a distinct creative angle, bespoke hero animation engine, custom color tokens, and tailored typography.
+              Explore 5 distinct creative directions, bespoke After Effects intro reveals, and the new 10-section Interloop Studio enterprise showcase.
             </p>
           </div>
 
@@ -105,7 +119,7 @@ export default function ConceptSwitcherModal({ isOpen, onClose }: ConceptSwitche
           </button>
         </div>
 
-        {/* 4 Cards Grid */}
+        {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mt-6">
           {CONCEPTS_DETAIL.map((c) => {
             const Icon = c.icon;
@@ -117,7 +131,9 @@ export default function ConceptSwitcherModal({ isOpen, onClose }: ConceptSwitche
                   playTactileClick("switch");
                   onClose();
                 }}
-                className={`group relative bg-stone-900/90 border border-white/10 ${c.borderGlow} rounded-2xl p-5 hover:bg-stone-900 transition-all duration-300 flex flex-col justify-between hover:shadow-2xl hover:scale-[1.01]`}
+                className={`group relative bg-stone-900/90 border border-white/10 ${c.borderGlow} rounded-2xl p-5 hover:bg-stone-900 transition-all duration-300 flex flex-col justify-between hover:shadow-2xl hover:scale-[1.01] ${
+                  c.id === "interloop" ? "md:col-span-2 bg-gradient-to-r from-stone-900 via-[#0A1626] to-stone-900 border-cyan-500/40" : ""
+                }`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
@@ -126,16 +142,16 @@ export default function ConceptSwitcherModal({ isOpen, onClose }: ConceptSwitche
                       <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${c.color} flex items-center justify-center text-white shadow-md`}>
                         <Icon className="w-4 h-4" />
                       </div>
-                      <h3 className="text-lg font-bold text-white group-hover:text-amber-200 transition-colors">
+                      <h3 className="text-lg font-bold text-white group-hover:text-cyan-200 transition-colors">
                         {c.name}
                       </h3>
                     </div>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/10 text-stone-300 border border-white/10">
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/10 text-cyan-300 border border-white/10">
                       {c.badge}
                     </span>
                   </div>
 
-                  <div className="space-y-3 text-xs text-stone-300 my-4">
+                  <div className="space-y-2 text-xs text-stone-300 my-4">
                     <div>
                       <span className="text-stone-400 font-mono text-[10px] block uppercase">Target Buyer:</span>
                       <p className="font-medium text-stone-200">{c.targetAudience}</p>
@@ -168,7 +184,7 @@ export default function ConceptSwitcherModal({ isOpen, onClose }: ConceptSwitche
                     })}
                   </div>
 
-                  <div className="inline-flex items-center gap-1 text-xs font-bold text-amber-400 group-hover:translate-x-1 transition-transform">
+                  <div className="inline-flex items-center gap-1 text-xs font-bold text-cyan-400 group-hover:translate-x-1 transition-transform">
                     <span>Explore Concept</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </div>
