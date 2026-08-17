@@ -12,15 +12,15 @@ interface ConceptSwitcherModalProps {
 
 const CONCEPTS_DETAIL = [
   {
-    id: "interloop",
+    id: "studio",
     num: "01",
-    name: "Interloop Studio",
-    route: "/interloop",
+    name: "Threadworks Studio",
+    route: "/studio",
     icon: Factory,
-    targetAudience: "Global Retailers, Multi-Category Brands (Nike, Target, Adidas, H&M, Levi's)",
+    targetAudience: "Global Retailers & Multi-Category Brands (Nike, Target, Adidas, H&M, Levi's)",
     palette: ["#00E5C8 (Cyan)", "#FF6B2B (Amber)", "#050912 (Obsidian)", "#D4AF37 (Gold)"],
     typography: "Inter + Space Grotesk + JetBrains Mono",
-    signatureAnimation: "Continuous Scroll-Driven Physics Fabric Ribbon that floats, twists, and unfurls to reveal text dynamically, plus interactive Atelier Pinboard Gallery.",
+    signatureAnimation: "Luxury Liquid Silk Cloth Surface simulation with tactile mouse ripples, and interactive Atelier Pinboard Gallery with pinned polaroids & sticky notes.",
     badge: "10-Section Powerhouse",
     color: "from-cyan-500 via-teal-500 to-blue-600",
     borderGlow: "group-hover:border-cyan-400/50",
@@ -103,7 +103,7 @@ export default function ConceptSwitcherModal({ isOpen, onClose }: ConceptSwitche
               Select a Page Experience
             </h2>
             <p className="text-xs sm:text-sm text-stone-400 mt-1">
-              Explore 5 distinct creative directions, bespoke After Effects intro reveals, and the new 10-section Interloop Studio enterprise showcase.
+              Explore 5 distinct creative directions, bespoke After Effects intro reveals, and the Threadworks Studio enterprise showcase.
             </p>
           </div>
 
@@ -132,7 +132,7 @@ export default function ConceptSwitcherModal({ isOpen, onClose }: ConceptSwitche
                   onClose();
                 }}
                 className={`group relative bg-stone-900/90 border border-white/10 ${c.borderGlow} rounded-2xl p-5 hover:bg-stone-900 transition-all duration-300 flex flex-col justify-between hover:shadow-2xl hover:scale-[1.01] ${
-                  c.id === "interloop" ? "md:col-span-2 bg-gradient-to-r from-stone-900 via-[#0A1626] to-stone-900 border-cyan-500/40" : ""
+                  c.id === "studio" ? "md:col-span-2 bg-gradient-to-r from-stone-900 via-[#0A1626] to-stone-900 border-cyan-500/40" : ""
                 }`}
               >
                 <div>

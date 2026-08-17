@@ -27,10 +27,10 @@ interface GlobalNavProps {
 
 export const CONCEPTS = [
   {
-    id: "interloop",
-    title: "Interloop Studio",
-    short: "Interloop Studio",
-    path: "/interloop",
+    id: "studio",
+    title: "Threadworks Studio",
+    short: "Studio Atelier",
+    path: "/studio",
     tagline: "Integrated Manufacturing Powerhouse",
     color: "from-cyan-500 via-teal-500 to-blue-600",
     badgeBg: "bg-cyan-950/60 border-cyan-400/40 text-cyan-300",
@@ -116,7 +116,7 @@ export default function GlobalNav({ onOpenRFQ, onOpenConceptSwitcher }: GlobalNa
             Client Pitch Demo:
           </span>
           <span className="hidden sm:inline text-stone-400">
-            Compare creative directions & Interloop Bangladesh multi-section showcase.
+            Compare creative directions & Threadworks Studio multi-section showcase.
           </span>
           <span className="font-mono text-cyan-300 bg-cyan-950/50 px-1.5 py-0.5 rounded border border-cyan-800/40 text-[10px]">
             Active: {currentConcept.title}
@@ -166,20 +166,20 @@ export default function GlobalNav({ onOpenRFQ, onOpenConceptSwitcher }: GlobalNa
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Buying House Brand Logo */}
           <Link
-            href="/interloop"
+            href="/studio"
             onClick={() => playTactileClick("soft")}
             className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded-lg p-1"
           >
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 via-teal-700 to-indigo-950 flex items-center justify-center shadow-lg shadow-black/40 ring-1 ring-white/20 group-hover:scale-105 transition-transform duration-300">
-              <span className="font-serif font-black text-white text-lg tracking-tighter">IL</span>
+              <span className="font-serif font-black text-white text-lg tracking-tighter">TB</span>
             </div>
             <div>
               <div className="flex items-center gap-1.5">
                 <span className="text-white font-bold tracking-tight text-base group-hover:text-cyan-200 transition-colors">
-                  INTERLOOP
+                  THREADWORKS
                 </span>
                 <span className="text-[10px] tracking-widest uppercase px-1.5 py-0.5 rounded bg-cyan-950/80 text-cyan-300 border border-cyan-500/30 font-mono">
-                  BD
+                  STUDIO
                 </span>
               </div>
               <p className="text-[10px] text-stone-400 tracking-wider uppercase font-medium">
