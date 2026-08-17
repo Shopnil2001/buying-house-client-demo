@@ -2,10 +2,13 @@
 
 import React, { useState } from "react";
 import StudioCinematicReveal from "./components/StudioCinematicReveal";
+import StudioHeroBanner from "./components/StudioHeroBanner";
+import ScrollRevealSection from "./components/ScrollRevealSection";
 import LuxurySilkClothBanner from "./components/LuxurySilkClothBanner";
 import PinboardGallery from "./components/PinboardGallery";
 import ProductCategoryShowcase from "./components/ProductCategoryShowcase";
 import FactsFigures from "./components/FactsFigures";
+import ESGBackgroundCottonCanvas from "./components/ESGBackgroundCottonCanvas";
 import { 
   Building2, 
   Sparkles, 
@@ -23,7 +26,8 @@ import {
   Check,
   Send,
   Droplets,
-  Sun
+  Sun,
+  Feather
 } from "lucide-react";
 import { playTactileClick } from "@/components/SoundEffects";
 
@@ -61,494 +65,456 @@ export default function StudioLandingPage() {
   };
 
   return (
-    <div className="bg-[#050912] text-stone-100 min-h-screen relative selection:bg-cyan-500/30 selection:text-cyan-200">
-      {/* 1. Bespoke After-Effects Level Cinematic Intro Reveal */}
+    <div className="bg-[#0A101A] text-[#FAF7F2] min-h-screen relative selection:bg-[#C26747]/30 selection:text-amber-200">
+      {/* 1. Bespoke After-Effects Level Cinematic Opening */}
       <StudioCinematicReveal key={revealKey} />
 
       {/* Floating Replay Intro Trigger */}
       <button
         onClick={handleReplayIntro}
-        className="fixed bottom-6 right-6 z-40 px-3.5 py-2 rounded-full bg-stone-950/90 hover:bg-stone-900 border border-cyan-500/40 text-cyan-300 hover:text-white font-mono text-[11px] backdrop-blur-md shadow-2xl flex items-center gap-2 hover:scale-105 active:scale-95 transition-all"
+        className="fixed bottom-6 right-6 z-40 px-3.5 py-2 rounded-full bg-[#121A28]/90 hover:bg-[#182335] border border-amber-500/30 text-amber-200 hover:text-white font-mono text-[11px] backdrop-blur-md shadow-2xl flex items-center gap-2 hover:scale-105 active:scale-95 transition-all"
         title="Replay Studio Intro FX"
       >
         <RotateCcw className="w-3.5 h-3.5" />
         <span>Replay Intro FX</span>
       </button>
 
-      {/* SECTION 1: HERO SECTION */}
-      <section className="relative min-h-[95vh] flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-b from-[#060B16] via-[#050912] to-[#060B16]">
-        {/* Subtle background glow */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-r from-cyan-600/15 via-teal-500/10 to-blue-600/15 rounded-full blur-[140px] pointer-events-none" />
-
-        <div className="relative z-20 max-w-5xl mx-auto text-center space-y-8">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-xs font-mono uppercase tracking-widest backdrop-blur-md shadow-2xl">
-            <Sparkles className="w-3.5 h-3.5 text-cyan-400 animate-spin" style={{ animationDuration: "6s" }} />
-            <span>Threadworks Studio • Sourcing & Manufacturing Powerhouse</span>
-          </div>
-
-          <div className="space-y-4">
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight font-sans text-white leading-[1.03]">
-              Engineered for <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-400">Global Scale</span> & Precision
-            </h1>
-            <p className="max-w-3xl mx-auto text-stone-300 text-sm sm:text-base md:text-xl font-light leading-relaxed">
-              From automated spinning to world-class hosiery, seamless activewear, laser-washed denim, and circular knitwear. Delivering over 150 million finished garments annually across 40+ export destinations.
-            </p>
-          </div>
-
-          {/* Micro Telemetry Bar */}
-          <div className="glass-panel max-w-2xl mx-auto rounded-2xl p-4 flex flex-wrap items-center justify-around gap-4 text-xs font-mono border border-cyan-500/30 shadow-2xl bg-[#09111E]/90">
-            <div className="text-center">
-              <span className="text-stone-400 block text-[10px] uppercase">Annual Volume</span>
-              <strong className="text-cyan-400 text-sm font-bold">150M+ Finished Units</strong>
-            </div>
-            <div className="h-6 w-[1px] bg-white/10 hidden sm:block" />
-            <div className="text-center">
-              <span className="text-stone-400 block text-[10px] uppercase">Compliance</span>
-              <strong className="text-emerald-400 text-sm font-bold">5 LEED Platinum Facilities</strong>
-            </div>
-            <div className="h-6 w-[1px] bg-white/10 hidden sm:block" />
-            <div className="text-center">
-              <span className="text-stone-400 block text-[10px] uppercase">Speed-to-Market</span>
-              <strong className="text-amber-400 text-sm font-bold">21–30 Days Lead Time</strong>
-            </div>
-          </div>
-
-          {/* CTA Group */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-            <a
-              href="#our-products"
-              onClick={() => playTactileClick("switch")}
-              className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 via-teal-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-sm shadow-2xl shadow-cyan-950/70 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 group"
-            >
-              <span>Explore Product Verticals</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-
-            <a
-              href="#insights-pinboard"
-              onClick={() => playTactileClick("soft")}
-              className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-stone-200 hover:text-white font-mono text-xs transition-all flex items-center justify-center gap-2"
-            >
-              <Sparkles className="w-4 h-4 text-amber-400" />
-              <span>View R&D Pinboard Gallery</span>
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* SECTION 1: HERO BANNER (With Eye-Catching Organic Fabric Canvas Animation) */}
+      <StudioHeroBanner />
 
       {/* SECTION 2: ABOUT US */}
-      <section id="about-us" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-6 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 text-xs font-mono uppercase tracking-wider">
-              <Building2 className="w-3.5 h-3.5" />
-              <span>Corporate Heritage & Manufacturing Presence</span>
+      <section id="about-us" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10">
+        <ScrollRevealSection direction="up">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-6 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#182335] border border-amber-500/30 text-amber-300 text-xs font-mono uppercase tracking-wider">
+                <Building2 className="w-3.5 h-3.5" />
+                <span>Corporate Heritage & Manufacturing Presence</span>
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light text-[#FAF7F2] tracking-tight leading-tight">
+                A Complete <span className="italic text-[#E0B27A]">Vertical Ecosystem</span> From Fiber to Retail Hanger
+              </h2>
+
+              <p className="text-[#D6CFC7] leading-relaxed text-sm sm:text-base font-sans">
+                With major industrial manufacturing campuses strategically situated in <strong>Gazipur</strong> and the <strong>Dhaka industrial corridor</strong>, our operations combine four decades of engineering expertise with Bangladesh's strategic duty-free export advantages.
+              </p>
+
+              <p className="text-[#A59E95] leading-relaxed text-sm font-sans">
+                We manage the entire textile lifecycle under one roof: in-house yarn spinning, circular & seamless knitting, computerized laser denim processing, automated cutting, eco-dyeing with Zero Liquid Discharge (ZLD), and statistical AQL 1.5 quality audits.
+              </p>
+
+              <div className="pt-2 grid grid-cols-2 gap-4 font-mono text-xs">
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+                  <span className="text-xl font-serif font-bold text-[#E0B27A]">Gazipur Hub</span>
+                  <p className="text-[#A59E95] font-sans">Specialized multi-gauge knitting & laser finishing park</p>
+                </div>
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+                  <span className="text-xl font-serif font-bold text-[#78A882]">Dhaka Central</span>
+                  <p className="text-[#A59E95] font-sans">Merchandising, 3D CAD design & ISO 17025 testing labs</p>
+                </div>
+              </div>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase font-sans tracking-tight leading-tight">
-              A Complete <span className="text-cyan-400">Vertical Ecosystem</span> From Fiber to Retail Hanger
-            </h2>
+            <div className="lg:col-span-6">
+              <div className="p-6 sm:p-8 rounded-3xl border border-white/10 space-y-6 bg-[#111926] shadow-xl">
+                <h3 className="text-xl font-serif font-bold text-white">
+                  Our Sourcing Advantage
+                </h3>
 
-            <p className="text-stone-300 leading-relaxed text-sm sm:text-base">
-              With major industrial manufacturing campuses strategically situated in <strong>Gazipur</strong> and the <strong>Dhaka industrial corridor</strong>, our operations combine four decades of engineering expertise with Bangladesh's strategic duty-free export advantages.
-            </p>
-
-            <p className="text-stone-400 leading-relaxed text-sm">
-              We manage the entire textile lifecycle under one roof: in-house yarn spinning, circular & seamless knitting, computerized laser denim processing, automated cutting, eco-dyeing with Zero Liquid Discharge (ZLD), and statistical AQL 1.5 quality audits.
-            </p>
-
-            <div className="pt-2 grid grid-cols-2 gap-4 font-mono text-xs">
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1">
-                <span className="text-xl font-bold text-cyan-400">Gazipur Hub</span>
-                <p className="text-stone-400">Specialized multi-gauge knitting & laser finishing park</p>
-              </div>
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1">
-                <span className="text-xl font-bold text-emerald-400">Dhaka Central</span>
-                <p className="text-stone-400">Merchandising, 3D CAD design & ISO 17025 testing labs</p>
+                <div className="space-y-3 text-xs font-sans">
+                  {[
+                    "Duty-Free Market Access to EU (EBA), UK (DCTS), Canada & Japan",
+                    "Consolidated Shipping Containers Direct from Chittagong Seaport",
+                    "Dedicated 3D Virtual Tech-Pack Sampling in Under 48 Hours",
+                    "Audited Living Wage & 100% Social Compliance Transparency",
+                    "ZDHC Level 3 Certified Low-Impact Chemistry Dyeing"
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-center gap-3 p-3.5 rounded-xl bg-black/30 border border-white/5 text-[#EFEBE4]">
+                      <Check className="w-4 h-4 text-[#E0B27A] flex-shrink-0" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-
-          <div className="lg:col-span-6">
-            <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-cyan-500/20 space-y-6 bg-[#0B1320]">
-              <h3 className="text-xl font-bold text-white uppercase font-sans">
-                Our Sourcing Advantage
-              </h3>
-
-              <div className="space-y-3 font-mono text-xs">
-                {[
-                  "Duty-Free Market Access to EU (EBA), UK (DCTS), Canada & Japan",
-                  "Consolidated Shipping Containers Direct from Chittagong Seaport",
-                  "Dedicated 3D Virtual Tech-Pack Sampling in Under 48 Hours",
-                  "Audited Living Wage & 100% Social Compliance Transparency",
-                  "ZDHC Level 3 Certified Low-Impact Chemistry Dyeing"
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-3 p-3 rounded-xl bg-black/40 border border-white/5 text-stone-200">
-                    <Check className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+        </ScrollRevealSection>
       </section>
 
       {/* SECTION 3: OUR FEATURES */}
-      <section id="our-features" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10">
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-stone-300 text-xs font-mono uppercase tracking-wider">
-            <Zap className="w-3.5 h-3.5 text-amber-400" />
-            <span>Competitive Core Competencies</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase font-sans tracking-tight">
-            Six Pillars of Manufacturing Excellence
-          </h2>
-          <p className="text-sm sm:text-base text-stone-400">
-            Engineered to deliver exceptional product quality, rapid lead times, and verified ESG compliance.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            {
-              num: "01",
-              title: "End-to-End Vertical Integration",
-              desc: "From spinning raw cotton bales to knitting, dyeing, finishing, and carton packaging—preventing supply chain bottlenecks.",
-            },
-            {
-              num: "02",
-              title: "3D CLO Digital Twin Prototyping",
-              desc: "Virtual pattern simulation reduces sample iterations from weeks to 48 hours with zero physical fabric waste.",
-            },
-            {
-              num: "03",
-              title: "ISO 17025 In-House Testing Labs",
-              desc: "Over 45 physical and chemical tests (Martindale, color fastness, bursting strength, delta-E) accredited to ASTM/AATCC.",
-            },
-            {
-              num: "04",
-              title: "Waterless Ozone & Laser Finishing",
-              desc: "Jeanologia laser scrapers and G2 ozone machines eliminate toxic potassium permanganate and drastically cut water usage.",
-            },
-            {
-              num: "05",
-              title: "Zero Liquid Discharge (ZLD) Dyeing",
-              desc: "Membrane bioreactors (MBR) and reverse osmosis recycle 95% of dyeing effluent directly back into processing vats.",
-            },
-            {
-              num: "06",
-              title: "Fast-Track 21-Day Execution",
-              desc: "Pre-reserved greige yarn and dedicated quick-response lines allow 21-day turnaround for high-velocity trend drops.",
-            },
-          ].map((feat) => (
-            <div
-              key={feat.num}
-              className="p-6 sm:p-8 rounded-3xl bg-[#0C1524] border border-white/10 hover:border-cyan-500/40 transition-all duration-300 space-y-4 hover:shadow-xl hover:shadow-cyan-950/40"
-            >
-              <span className="font-mono text-2xl font-black text-cyan-400">{feat.num}</span>
-              <h3 className="text-lg font-bold text-white font-sans">{feat.title}</h3>
-              <p className="text-xs sm:text-sm text-stone-400 leading-relaxed font-sans">{feat.desc}</p>
+      <section id="our-features" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10">
+        <ScrollRevealSection direction="up">
+          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#D6CFC7] text-xs font-mono uppercase tracking-wider">
+              <Zap className="w-3.5 h-3.5 text-[#E0B27A]" />
+              <span>Competitive Core Competencies</span>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* SECTION 4: KEY FACTS & FIGURES */}
-      <FactsFigures />
-
-      {/* SECTION 5: OUR PRODUCTS */}
-      <ProductCategoryShowcase />
-
-      {/* SECTION 6: OUR PHILOSOPHY (LUXURY SILK CLOTH BANNER REVEAL) */}
-      <section id="our-philosophy" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10 space-y-12">
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-950/80 border border-amber-500/40 text-amber-300 text-xs font-mono uppercase tracking-widest backdrop-blur-md">
-            <Leaf className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Core Values & Operating Philosophy</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase font-sans tracking-tight">
-            Woven with Purpose & Transparency
-          </h2>
-          <p className="text-sm sm:text-base text-stone-400">
-            Interact with our liquid silk surface below to explore our three guiding pillars: People, Planet, and Prosperity.
-          </p>
-        </div>
-
-        {/* Liquid Silk Banner Simulation Component */}
-        <LuxurySilkClothBanner />
-      </section>
-
-      {/* SECTION 7: INSIGHTS (PINBOARD GALLERY) */}
-      <PinboardGallery />
-
-      {/* SECTION 8: TRUSTED CUSTOMERS / GLOBAL BRAND PARTNERS */}
-      <section id="trusted-customers" className="py-24 px-4 sm:px-6 lg:px-8 bg-[#070C15] border-t border-white/10 text-stone-100">
-        <div className="max-w-7xl mx-auto space-y-12">
-          <div className="text-center max-w-3xl mx-auto space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-stone-300 text-xs font-mono uppercase tracking-wider">
-              <Globe2 className="w-3.5 h-3.5 text-cyan-400" />
-              <span>Global Client Portfolio</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase font-sans tracking-tight">
-              Trusted by World-Leading Apparel Brands
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light text-[#FAF7F2] tracking-tight">
+              Six Pillars of Manufacturing Excellence
             </h2>
-            <p className="text-sm sm:text-base text-stone-400">
-              Delivering high-volume seasonal programs and quick-turn capsules to top retailers across Europe, North America, and Asia.
+            <p className="text-sm sm:text-base text-[#D6CFC7]">
+              Engineered to deliver exceptional product quality, rapid lead times, and verified ESG compliance.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {BRAND_PARTNERS.map((brand, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                num: "01",
+                title: "End-to-End Vertical Integration",
+                desc: "From spinning raw cotton bales to knitting, dyeing, finishing, and carton packaging—preventing supply chain bottlenecks.",
+              },
+              {
+                num: "02",
+                title: "3D CLO Digital Twin Prototyping",
+                desc: "Virtual pattern simulation reduces sample iterations from weeks to 48 hours with zero physical fabric waste.",
+              },
+              {
+                num: "03",
+                title: "ISO 17025 In-House Testing Labs",
+                desc: "Over 45 physical and chemical tests (Martindale, color fastness, bursting strength, delta-E) accredited to ASTM/AATCC.",
+              },
+              {
+                num: "04",
+                title: "Waterless Ozone & Laser Finishing",
+                desc: "Jeanologia laser scrapers and G2 ozone machines eliminate toxic potassium permanganate and drastically cut water usage.",
+              },
+              {
+                num: "05",
+                title: "Zero Liquid Discharge (ZLD) Dyeing",
+                desc: "Membrane bioreactors (MBR) and reverse osmosis recycle 95% of dyeing effluent directly back into processing vats.",
+              },
+              {
+                num: "06",
+                title: "Fast-Track 21-Day Execution",
+                desc: "Pre-reserved greige yarn and dedicated quick-response lines allow 21-day turnaround for high-velocity trend drops.",
+              },
+            ].map((feat) => (
               <div
-                key={i}
-                className="p-6 rounded-2xl bg-[#0C1524] border border-white/10 hover:border-cyan-500/40 text-center space-y-2 transition-all hover:scale-105"
+                key={feat.num}
+                className="p-6 sm:p-8 rounded-3xl bg-[#111824] border border-white/10 hover:border-[#E0B27A]/40 transition-all duration-300 space-y-4 shadow-lg hover:shadow-xl"
               >
-                <div className="text-2xl font-black tracking-widest text-white uppercase font-space">
-                  {brand.name}
-                </div>
-                <div className="text-[11px] font-mono text-cyan-400">
-                  {brand.tag}
-                </div>
+                <span className="font-serif text-2xl font-bold text-[#E0B27A]">{feat.num}</span>
+                <h3 className="text-lg font-serif font-bold text-white">{feat.title}</h3>
+                <p className="text-xs sm:text-sm text-[#A59E95] leading-relaxed font-sans">{feat.desc}</p>
               </div>
             ))}
           </div>
-
-          <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-center text-xs font-mono text-stone-400 max-w-2xl mx-auto">
-            ✓ 100% Social Audited • BSCI Grade A • WRAP Gold • Sedex SMETA • FairWear Verified
-          </div>
-        </div>
+        </ScrollRevealSection>
       </section>
 
-      {/* SECTION 9: SUSTAINABILITY & ESG */}
-      <section id="sustainability" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-6 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 text-xs font-mono uppercase tracking-wider">
-              <Leaf className="w-3.5 h-3.5" />
-              <span>ESG Leadership & Green Mills</span>
-            </div>
+      {/* SECTION 4: KEY FACTS & FIGURES */}
+      <ScrollRevealSection direction="up">
+        <FactsFigures />
+      </ScrollRevealSection>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase font-sans tracking-tight leading-tight">
-              Benchmarking <span className="text-emerald-400">LEED Platinum</span> Manufacturing in South Asia
+      {/* SECTION 5: OUR PRODUCTS */}
+      <ScrollRevealSection direction="up">
+        <ProductCategoryShowcase />
+      </ScrollRevealSection>
+
+      {/* SECTION 6: OUR PHILOSOPHY (LUXURY SILK CLOTH BANNER) */}
+      <section id="our-philosophy" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10 space-y-12">
+        <ScrollRevealSection direction="up">
+          <div className="text-center max-w-3xl mx-auto space-y-4 mb-10">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#182335] border border-amber-500/30 text-amber-200 text-xs font-mono uppercase tracking-widest backdrop-blur-md">
+              <Leaf className="w-3.5 h-3.5 text-[#78A882]" />
+              <span>Core Values & Operating Philosophy</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light text-[#FAF7F2] tracking-tight">
+              Woven with Purpose & Transparency
             </h2>
-
-            <p className="text-stone-300 text-sm sm:text-base leading-relaxed">
-              Our Gazipur and Dhaka facilities adhere to the highest global standards set by the US Green Building Council (USGBC), incorporating rainwater harvesting, daylight harvesting skylights, and geothermal cooling systems.
+            <p className="text-sm sm:text-base text-[#D6CFC7]">
+              Interact with our liquid silk surface below to explore our three guiding pillars: People, Planet, and Prosperity.
             </p>
+          </div>
 
-            <div className="space-y-3 font-mono text-xs text-stone-300">
-              <div className="flex items-center gap-2">
-                <Droplets className="w-4 h-4 text-cyan-400" />
-                <span>Zero Liquid Discharge (ZLD) with 95.8% biological water recovery</span>
+          <LuxurySilkClothBanner />
+        </ScrollRevealSection>
+      </section>
+
+      {/* SECTION 7: INSIGHTS (PINBOARD GALLERY) */}
+      <ScrollRevealSection direction="up">
+        <PinboardGallery />
+      </ScrollRevealSection>
+
+      {/* SECTION 8: TRUSTED CUSTOMERS / GLOBAL BRAND PARTNERS */}
+      <section id="trusted-customers" className="py-28 px-4 sm:px-6 lg:px-8 bg-[#090F18] border-t border-white/10 text-stone-100">
+        <ScrollRevealSection direction="up">
+          <div className="max-w-7xl mx-auto space-y-12">
+            <div className="text-center max-w-3xl mx-auto space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#D6CFC7] text-xs font-mono uppercase tracking-wider">
+                <Globe2 className="w-3.5 h-3.5 text-[#E0B27A]" />
+                <span>Global Client Portfolio</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Sun className="w-4 h-4 text-amber-400" />
-                <span>15.8 MW rooftop solar generating 40%+ of plant power needs</span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light text-[#FAF7F2] tracking-tight">
+                Trusted by World-Leading Apparel Brands
+              </h2>
+              <p className="text-sm sm:text-base text-[#D6CFC7]">
+                Delivering high-volume seasonal programs and quick-turn capsules to top retailers across Europe, North America, and Asia.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {BRAND_PARTNERS.map((brand, i) => (
+                <div
+                  key={i}
+                  className="p-6 rounded-2xl bg-[#111926] border border-white/10 hover:border-[#E0B27A]/40 text-center space-y-2 transition-all hover:scale-105 shadow-md"
+                >
+                  <div className="text-xl font-serif font-bold tracking-wider text-white uppercase">
+                    {brand.name}
+                  </div>
+                  <div className="text-[11px] font-mono text-[#E0B27A]">
+                    {brand.tag}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-center text-xs font-mono text-[#A59E95] max-w-2xl mx-auto">
+              ✓ 100% Social Audited • BSCI Grade A • WRAP Gold • Sedex SMETA • FairWear Verified
+            </div>
+          </div>
+        </ScrollRevealSection>
+      </section>
+
+      {/* SECTION 9: SUSTAINABILITY & ESG (With Generative Floating Cotton Physics Canvas Background) */}
+      <section id="sustainability" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10 relative overflow-hidden rounded-3xl my-8 bg-[#09140D]">
+        {/* Generative Floating Cotton Background Animation from Sustainable page */}
+        <ESGBackgroundCottonCanvas />
+
+        <ScrollRevealSection direction="up" className="relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-6 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#16241B]/90 border border-emerald-500/30 text-emerald-300 text-xs font-mono uppercase tracking-wider backdrop-blur-md">
+                <Leaf className="w-3.5 h-3.5" />
+                <span>ESG Leadership & Green Mills</span>
               </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>Higg Index FEM Verified & ZDHC MRSL Conformance Level 3</span>
+
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light text-[#FAF7F2] tracking-tight leading-tight">
+                Benchmarking <span className="italic text-[#78A882]">LEED Platinum</span> Manufacturing in South Asia
+              </h2>
+
+              <p className="text-[#D6CFC7] text-sm sm:text-base leading-relaxed font-sans">
+                Our Gazipur and Dhaka facilities adhere to the highest global standards set by the US Green Building Council (USGBC), incorporating rainwater harvesting, daylight harvesting skylights, and geothermal cooling systems.
+              </p>
+
+              <div className="space-y-3 font-mono text-xs text-[#EFEBE4]">
+                <div className="flex items-center gap-2 bg-black/40 p-2.5 rounded-xl border border-white/5">
+                  <Droplets className="w-4 h-4 text-[#A8C2DC]" />
+                  <span>Zero Liquid Discharge (ZLD) with 95.8% biological water recovery</span>
+                </div>
+                <div className="flex items-center gap-2 bg-black/40 p-2.5 rounded-xl border border-white/5">
+                  <Sun className="w-4 h-4 text-[#E0B27A]" />
+                  <span>15.8 MW rooftop solar generating 40%+ of plant power needs</span>
+                </div>
+                <div className="flex items-center gap-2 bg-black/40 p-2.5 rounded-xl border border-white/5">
+                  <CheckCircle2 className="w-4 h-4 text-[#78A882]" />
+                  <span>Higg Index FEM Verified & ZDHC MRSL Conformance Level 3</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-6 grid grid-cols-2 gap-4">
+              <div className="p-6 rounded-2xl bg-[#0D1D13]/90 border border-emerald-500/30 space-y-2 backdrop-blur-md shadow-xl">
+                <span className="text-xs font-mono text-[#78A882] font-bold uppercase">Water Saved</span>
+                <div className="text-3xl font-serif font-bold text-white">95.8%</div>
+                <p className="text-xs text-[#A59E95]">Recycled process water</p>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-[#0D1D13]/90 border border-emerald-500/30 space-y-2 backdrop-blur-md shadow-xl">
+                <span className="text-xs font-mono text-[#E0B27A] font-bold uppercase">Solar Microgrid</span>
+                <div className="text-3xl font-serif font-bold text-white">15.8 MW</div>
+                <p className="text-xs text-[#A59E95]">Clean power generated</p>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-[#0D1D13]/90 border border-emerald-500/30 space-y-2 backdrop-blur-md shadow-xl">
+                <span className="text-xs font-mono text-[#A8C2DC] font-bold uppercase">GHG Reduction</span>
+                <div className="text-3xl font-serif font-bold text-white">-42.8%</div>
+                <p className="text-xs text-[#A59E95]">Scope 1 & 2 carbon cut</p>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-[#0D1D13]/90 border border-emerald-500/30 space-y-2 backdrop-blur-md shadow-xl">
+                <span className="text-xs font-mono text-[#78A882] font-bold uppercase">Certification</span>
+                <div className="text-2xl font-serif font-bold text-white">GOTS 7.0</div>
+                <p className="text-xs text-[#A59E95]">100% Organic cotton</p>
               </div>
             </div>
           </div>
-
-          <div className="lg:col-span-6 grid grid-cols-2 gap-4">
-            <div className="p-6 rounded-2xl bg-[#09180E] border border-emerald-500/20 space-y-2">
-              <span className="text-xs font-mono text-emerald-400 font-bold uppercase">Water Saved</span>
-              <div className="text-3xl font-black text-white font-space">95.8%</div>
-              <p className="text-xs text-stone-400">Recycled process water</p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-[#09180E] border border-emerald-500/20 space-y-2">
-              <span className="text-xs font-mono text-amber-400 font-bold uppercase">Solar Microgrid</span>
-              <div className="text-3xl font-black text-white font-space">15.8 MW</div>
-              <p className="text-xs text-stone-400">Clean power generated</p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-[#09180E] border border-emerald-500/20 space-y-2">
-              <span className="text-xs font-mono text-cyan-400 font-bold uppercase">GHG Reduction</span>
-              <div className="text-3xl font-black text-white font-space">-42.8%</div>
-              <p className="text-xs text-stone-400">Scope 1 & 2 carbon cut</p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-[#09180E] border border-emerald-500/20 space-y-2">
-              <span className="text-xs font-mono text-emerald-400 font-bold uppercase">Certification</span>
-              <div className="text-2xl font-black text-white font-space">GOTS 7.0</div>
-              <p className="text-xs text-stone-400">100% Organic cotton</p>
-            </div>
-          </div>
-        </div>
+        </ScrollRevealSection>
       </section>
 
       {/* SECTION 10: CONTACT US / INQUIRY */}
-      <section id="contact-us" className="py-24 px-4 sm:px-6 lg:px-8 bg-[#070D18] border-t border-white/10 text-stone-100">
-        <div className="max-w-7xl mx-auto space-y-12">
-          <div className="text-center max-w-3xl mx-auto space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 text-xs font-mono uppercase tracking-wider">
-              <Mail className="w-3.5 h-3.5" />
-              <span>Direct Merchandising & Sourcing Desk</span>
+      <section id="contact-us" className="py-28 px-4 sm:px-6 lg:px-8 bg-[#090F18] border-t border-white/10 text-stone-100">
+        <ScrollRevealSection direction="up">
+          <div className="max-w-7xl mx-auto space-y-12">
+            <div className="text-center max-w-3xl mx-auto space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182335] border border-amber-500/30 text-amber-300 text-xs font-mono uppercase tracking-wider">
+                <Mail className="w-3.5 h-3.5" />
+                <span>Direct Merchandising & Sourcing Desk</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light text-[#FAF7F2] tracking-tight">
+                Connect with Our Engineering Hub
+              </h2>
+              <p className="text-sm sm:text-base text-[#D6CFC7]">
+                Schedule a factory tour at our Gazipur campus, request 3D digital CLO sample files, or request physical fabric swatches.
+              </p>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase font-sans tracking-tight">
-              Connect with Our Engineering Hub
-            </h2>
-            <p className="text-sm sm:text-base text-stone-400">
-              Schedule a factory tour at our Gazipur campus, request 3D digital CLO sample files, or request physical fabric swatches.
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            <div className="lg:col-span-5 space-y-6">
-              <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 space-y-6 bg-[#0A1424]">
-                <div className="space-y-1">
-                  <h3 className="text-xl font-bold text-white font-sans">
-                    Bangladesh Headquarters & Mill
-                  </h3>
-                  <p className="text-xs text-stone-400 font-mono">
-                    Threadworks Studio Manufacturing Operations
-                  </p>
-                </div>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              <div className="lg:col-span-5 space-y-6">
+                <div className="p-6 sm:p-8 rounded-3xl border border-white/10 space-y-6 bg-[#111926] shadow-xl">
+                  <div className="space-y-1">
+                    <h3 className="text-xl font-serif font-bold text-white">
+                      Bangladesh Headquarters & Mill
+                    </h3>
+                    <p className="text-xs text-[#A59E95] font-mono">
+                      Threadworks Studio Manufacturing Operations
+                    </p>
+                  </div>
 
-                <div className="space-y-4 text-xs font-mono text-stone-300">
-                  <div className="flex items-start gap-3">
-                    <MapPin className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <strong className="text-white block">Manufacturing Facility:</strong>
-                      <span>Soydana, Gazipur Sadar, Gazipur 1704, Bangladesh</span>
+                  <div className="space-y-4 text-xs font-mono text-[#D6CFC7]">
+                    <div className="flex items-start gap-3">
+                      <MapPin className="w-4 h-4 text-[#E0B27A] flex-shrink-0 mt-0.5" />
+                      <div>
+                        <strong className="text-white block font-sans">Manufacturing Facility:</strong>
+                        <span>Soydana, Gazipur Sadar, Gazipur 1704, Bangladesh</span>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="flex items-start gap-3">
-                    <Building2 className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <strong className="text-white block">Corporate & Merchandising Office:</strong>
-                      <span>Gulshan-2 Diplomatic Avenue, Dhaka 1212, Bangladesh</span>
+                    <div className="flex items-start gap-3">
+                      <Building2 className="w-4 h-4 text-[#E0B27A] flex-shrink-0 mt-0.5" />
+                      <div>
+                        <strong className="text-white block font-sans">Corporate & Merchandising Office:</strong>
+                        <span>Gulshan-2 Diplomatic Avenue, Dhaka 1212, Bangladesh</span>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="flex items-center gap-3">
-                    <Phone className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                    <span>+880 2 988 4120 • +880 1711 000 000</span>
-                  </div>
+                    <div className="flex items-center gap-3">
+                      <Phone className="w-4 h-4 text-[#E0B27A] flex-shrink-0" />
+                      <span>+880 2 988 4120 • +880 1711 000 000</span>
+                    </div>
 
-                  <div className="flex items-center gap-3">
-                    <Mail className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                    <span className="text-cyan-300">sourcing@threadworksbd.com</span>
+                    <div className="flex items-center gap-3">
+                      <Mail className="w-4 h-4 text-[#E0B27A] flex-shrink-0" />
+                      <span className="text-[#E0B27A]">sourcing@threadworksbd.com</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div className="lg:col-span-7 glass-panel p-6 sm:p-8 rounded-3xl border border-cyan-500/30 bg-[#0C1628]">
-              {contactSubmitted ? (
-                <div className="py-12 text-center space-y-4">
-                  <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/40 shadow-xl">
-                    <Check className="w-8 h-8" />
+              <div className="lg:col-span-7 p-6 sm:p-8 rounded-3xl border border-white/10 bg-[#111926] shadow-xl">
+                {contactSubmitted ? (
+                  <div className="py-12 text-center space-y-4">
+                    <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-[#78A882] flex items-center justify-center mx-auto border border-emerald-500/40 shadow-xl">
+                      <Check className="w-8 h-8" />
+                    </div>
+                    <h3 className="text-2xl font-serif font-bold text-white">
+                      Inquiry Docket Logged
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#D6CFC7] max-w-md mx-auto font-sans">
+                      Thank you, {contactForm.name}. Our Dhaka senior merchandising director and technical lab lead will connect with {contactForm.email} within 24 hours.
+                    </p>
+                    <button
+                      onClick={() => setContactSubmitted(false)}
+                      className="px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-xs font-mono text-white"
+                    >
+                      Submit Another Inquiry
+                    </button>
                   </div>
-                  <h3 className="text-2xl font-bold text-white font-sans">
-                    Inquiry Docket Logged
-                  </h3>
-                  <p className="text-xs sm:text-sm text-stone-300 max-w-md mx-auto">
-                    Thank you, {contactForm.name}. Our Dhaka senior merchandising director and technical lab lead will connect with {contactForm.email} within 24 hours.
-                  </p>
-                  <button
-                    onClick={() => setContactSubmitted(false)}
-                    className="px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-xs font-mono text-white"
-                  >
-                    Submit Another Inquiry
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleContactSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                ) : (
+                  <form onSubmit={handleContactSubmit} className="space-y-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono text-[#D6CFC7] mb-1">Your Full Name *</label>
+                        <input
+                          type="text"
+                          required
+                          placeholder="e.g. Marcus Lindqvist"
+                          value={contactForm.name}
+                          onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
+                          className="w-full bg-black/40 border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[#E0B27A]"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-mono text-[#D6CFC7] mb-1">Apparel Brand / Company *</label>
+                        <input
+                          type="text"
+                          required
+                          placeholder="e.g. Nordic Activewear Ltd"
+                          value={contactForm.brand}
+                          onChange={(e) => setContactForm({ ...contactForm, brand: e.target.value })}
+                          className="w-full bg-black/40 border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[#E0B27A]"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono text-[#D6CFC7] mb-1">Official Email Address *</label>
+                        <input
+                          type="email"
+                          required
+                          placeholder="sourcing@yourbrand.com"
+                          value={contactForm.email}
+                          onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
+                          className="w-full bg-black/40 border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[#E0B27A]"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-mono text-[#D6CFC7] mb-1">Product Vertical of Interest</label>
+                        <select
+                          value={contactForm.category}
+                          onChange={(e) => setContactForm({ ...contactForm, category: e.target.value })}
+                          className="w-full bg-[#0D1420] border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[#E0B27A]"
+                        >
+                          <option>Hosiery & Performance Socks</option>
+                          <option>Seamless Engineered Activewear</option>
+                          <option>Eco-Laser Denim & Bottoms</option>
+                          <option>Knitwear & Heavy French Terry</option>
+                          <option>Integrated Spinning & Blended Yarns</option>
+                        </select>
+                      </div>
+                    </div>
+
                     <div>
-                      <label className="block text-xs font-mono text-stone-300 mb-1">Your Full Name *</label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="e.g. Marcus Lindqvist"
-                        value={contactForm.name}
-                        onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
-                        className="w-full bg-black/50 border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-400"
+                      <label className="block text-xs font-mono text-[#D6CFC7] mb-1">Tech-Pack Details / Inquiry Notes</label>
+                      <textarea
+                        rows={3}
+                        placeholder="e.g., Requesting quotation and prototype timeline for 50,000 pairs 168N merino wool hiking socks with seamless toe closure."
+                        value={contactForm.message}
+                        onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
+                        className="w-full bg-black/40 border border-white/15 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-[#E0B27A]"
                       />
                     </div>
 
-                    <div>
-                      <label className="block text-xs font-mono text-stone-300 mb-1">Apparel Brand / Company *</label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="e.g. Nordic Activewear Ltd"
-                        value={contactForm.brand}
-                        onChange={(e) => setContactForm({ ...contactForm, brand: e.target.value })}
-                        className="w-full bg-black/50 border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-400"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-mono text-stone-300 mb-1">Official Email Address *</label>
-                      <input
-                        type="email"
-                        required
-                        placeholder="sourcing@yourbrand.com"
-                        value={contactForm.email}
-                        onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
-                        className="w-full bg-black/50 border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-400"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-mono text-stone-300 mb-1">Product Vertical of Interest</label>
-                      <select
-                        value={contactForm.category}
-                        onChange={(e) => setContactForm({ ...contactForm, category: e.target.value })}
-                        className="w-full bg-black/80 border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-400"
-                      >
-                        <option>Hosiery & Performance Socks</option>
-                        <option>Seamless Engineered Activewear</option>
-                        <option>Eco-Laser Denim & Bottoms</option>
-                        <option>Knitwear & Heavy French Terry</option>
-                        <option>Integrated Spinning & Blended Yarns</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-mono text-stone-300 mb-1">Tech-Pack Details / Inquiry Notes</label>
-                    <textarea
-                      rows={3}
-                      placeholder="e.g., Requesting quotation and prototype timeline for 50,000 pairs 168N merino wool hiking socks with seamless toe closure."
-                      value={contactForm.message}
-                      onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
-                      className="w-full bg-black/50 border border-white/15 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-cyan-400"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-400 via-teal-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-xl shadow-cyan-950/70 hover:scale-[1.01] active:scale-95 transition-all"
-                  >
-                    <Send className="w-4 h-4" />
-                    <span>Dispatch Inquiry to Threadworks Studio Desk</span>
-                  </button>
-                </form>
-              )}
+                    <button
+                      type="submit"
+                      className="w-full py-4 rounded-full bg-[#C26747] hover:bg-[#B55C3E] text-white font-semibold text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-xl shadow-orange-950/40 hover:scale-[1.01] active:scale-95 transition-all"
+                    >
+                      <Send className="w-4 h-4" />
+                      <span>Dispatch Inquiry to Threadworks Studio Desk</span>
+                    </button>
+                  </form>
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        </ScrollRevealSection>
       </section>
 
       {/* FOOTER */}
-      <footer className="py-16 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-black/90 text-stone-400 text-xs font-mono">
+      <footer className="py-16 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-[#070D16] text-[#A59E95] text-xs font-mono">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="space-y-1 text-center sm:text-left">
-            <div className="font-bold text-white text-sm">THREADWORKS STUDIO — ENTERPRISE APPAREL ATELIER</div>
+            <div className="font-serif font-bold text-white text-sm">THREADWORKS STUDIO — ENTERPRISE APPAREL ATELIER</div>
             <p>Gazipur Manufacturing Campus • Dhaka Central Corporate Hub • ISO 9001 / 14001 / 45001 / 17025 Accredited</p>
           </div>
 
-          <div className="flex items-center gap-4 text-cyan-400">
+          <div className="flex items-center gap-4 text-[#E0B27A]">
             <span>LEED PLATINUM • GOTS • OEKO-TEX 100 • HIGG FEM</span>
           </div>
         </div>
