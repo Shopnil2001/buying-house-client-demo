@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import StudioCinematicReveal from "./components/StudioCinematicReveal";
+import SplineScroll3DScene from "./components/SplineScroll3DScene";
 import StudioHeroBanner from "./components/StudioHeroBanner";
 import Spline3DFabricCanvas from "./components/Spline3DFabricCanvas";
 import ScrollRevealSection from "./components/ScrollRevealSection";
@@ -71,6 +72,9 @@ export default function StudioLandingPage() {
       {/* 1. Bespoke After-Effects Level Cinematic Opening */}
       <StudioCinematicReveal key={revealKey} />
 
+      {/* 2. Continuous Full-Page Spline 3D Scroll-Driven Parallax Engine */}
+      <SplineScroll3DScene />
+
       {/* Floating Replay Intro Trigger */}
       <button
         onClick={handleReplayIntro}
@@ -82,14 +86,16 @@ export default function StudioLandingPage() {
       </button>
 
       {/* SECTION 1: HERO BANNER (With Cinematic Parallax Macro Silk & Fluid Waves) */}
-      <StudioHeroBanner />
+      <div className="relative z-10">
+        <StudioHeroBanner />
+      </div>
 
       {/* SECTION 2: ABOUT US */}
-      <section id="about-us" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10">
-        <ScrollRevealSection direction="up">
+      <section id="about-us" className="relative z-10 py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10">
+        <ScrollRevealSection direction="3d-tilt">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#142030] border border-amber-500/30 text-amber-300 text-xs font-mono uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#142030]/90 border border-amber-500/30 text-amber-300 text-xs font-mono uppercase tracking-wider backdrop-blur-md">
                 <Building2 className="w-3.5 h-3.5" />
                 <span>Corporate Heritage & Manufacturing Presence</span>
               </div>
@@ -107,11 +113,11 @@ export default function StudioLandingPage() {
               </p>
 
               <div className="pt-2 grid grid-cols-2 gap-4 font-mono text-xs">
-                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+                <div className="p-4 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-md space-y-1">
                   <span className="text-xl font-serif font-bold text-[#E0B27A]">Gazipur Hub</span>
                   <p className="text-[#A59E95] font-sans">Specialized multi-gauge knitting & laser finishing park</p>
                 </div>
-                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+                <div className="p-4 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-md space-y-1">
                   <span className="text-xl font-serif font-bold text-[#78A882]">Dhaka Central</span>
                   <p className="text-[#A59E95] font-sans">Merchandising, 3D CAD design & ISO 17025 testing labs</p>
                 </div>
@@ -119,7 +125,7 @@ export default function StudioLandingPage() {
             </div>
 
             <div className="lg:col-span-6">
-              <div className="p-6 sm:p-8 rounded-3xl border border-white/10 space-y-6 bg-[#0E1624] shadow-2xl">
+              <div className="p-6 sm:p-8 rounded-3xl border border-white/10 space-y-6 bg-[#0E1624]/90 backdrop-blur-md shadow-2xl">
                 <h3 className="text-xl font-serif font-bold text-white">
                   Our Sourcing Advantage
                 </h3>
@@ -145,10 +151,10 @@ export default function StudioLandingPage() {
       </section>
 
       {/* SECTION 3: INTERACTIVE 3D SPLINE-LIKE SPATIAL TEXTILE ENGINE */}
-      <section id="spline-3d-visualizer" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10 space-y-8">
-        <ScrollRevealSection direction="up">
+      <section id="spline-3d-visualizer" className="relative z-10 py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10 space-y-8">
+        <ScrollRevealSection direction="3d-tilt">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-8">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#182335] border border-amber-500/30 text-amber-200 text-xs font-mono uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#182335]/90 border border-amber-500/30 text-amber-200 text-xs font-mono uppercase tracking-widest backdrop-blur-md">
               <Box className="w-3.5 h-3.5 text-amber-400" />
               <span>Real-Time 3D Spatial Visualizer</span>
             </div>
@@ -165,10 +171,10 @@ export default function StudioLandingPage() {
       </section>
 
       {/* SECTION 4: OUR FEATURES */}
-      <section id="our-features" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10">
-        <ScrollRevealSection direction="up">
+      <section id="our-features" className="relative z-10 py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10">
+        <ScrollRevealSection direction="3d-tilt">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#D6CFC7] text-xs font-mono uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#D6CFC7] text-xs font-mono uppercase tracking-wider backdrop-blur-md">
               <Zap className="w-3.5 h-3.5 text-[#E0B27A]" />
               <span>Competitive Core Competencies</span>
             </div>
@@ -215,7 +221,7 @@ export default function StudioLandingPage() {
             ].map((feat) => (
               <div
                 key={feat.num}
-                className="p-6 sm:p-8 rounded-3xl bg-[#0E1624] border border-white/10 hover:border-[#E0B27A]/40 transition-all duration-300 space-y-4 shadow-lg hover:shadow-2xl"
+                className="p-6 sm:p-8 rounded-3xl bg-[#0E1624]/90 border border-white/10 hover:border-[#E0B27A]/40 transition-all duration-300 space-y-4 shadow-lg hover:shadow-2xl backdrop-blur-md hover:scale-[1.02]"
               >
                 <span className="font-serif text-2xl font-bold text-[#E0B27A]">{feat.num}</span>
                 <h3 className="text-lg font-serif font-bold text-white">{feat.title}</h3>
@@ -227,20 +233,24 @@ export default function StudioLandingPage() {
       </section>
 
       {/* SECTION 5: KEY FACTS & FIGURES */}
-      <ScrollRevealSection direction="up">
-        <FactsFigures />
-      </ScrollRevealSection>
+      <div className="relative z-10">
+        <ScrollRevealSection direction="3d-tilt">
+          <FactsFigures />
+        </ScrollRevealSection>
+      </div>
 
       {/* SECTION 6: OUR PRODUCTS */}
-      <ScrollRevealSection direction="up">
-        <ProductCategoryShowcase />
-      </ScrollRevealSection>
+      <div className="relative z-10">
+        <ScrollRevealSection direction="3d-tilt">
+          <ProductCategoryShowcase />
+        </ScrollRevealSection>
+      </div>
 
       {/* SECTION 7: OUR PHILOSOPHY (LUXURY SILK CLOTH BANNER) */}
-      <section id="our-philosophy" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10 space-y-12">
-        <ScrollRevealSection direction="up">
+      <section id="our-philosophy" className="relative z-10 py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10 space-y-12">
+        <ScrollRevealSection direction="3d-tilt">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-10">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#182335] border border-amber-500/30 text-amber-200 text-xs font-mono uppercase tracking-widest backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#182335]/90 border border-amber-500/30 text-amber-200 text-xs font-mono uppercase tracking-widest backdrop-blur-md">
               <Leaf className="w-3.5 h-3.5 text-[#78A882]" />
               <span>Core Values & Operating Philosophy</span>
             </div>
@@ -257,16 +267,18 @@ export default function StudioLandingPage() {
       </section>
 
       {/* SECTION 8: INSIGHTS (PINBOARD GALLERY WITH REAL HIGH-RES ASSETS) */}
-      <ScrollRevealSection direction="up">
-        <PinboardGallery />
-      </ScrollRevealSection>
+      <div className="relative z-10">
+        <ScrollRevealSection direction="3d-tilt">
+          <PinboardGallery />
+        </ScrollRevealSection>
+      </div>
 
       {/* SECTION 9: TRUSTED CUSTOMERS / GLOBAL BRAND PARTNERS */}
-      <section id="trusted-customers" className="py-28 px-4 sm:px-6 lg:px-8 bg-[#080E17] border-t border-white/10 text-stone-100">
-        <ScrollRevealSection direction="up">
+      <section id="trusted-customers" className="relative z-10 py-28 px-4 sm:px-6 lg:px-8 bg-[#080E17]/80 border-t border-white/10 text-stone-100 backdrop-blur-sm">
+        <ScrollRevealSection direction="3d-tilt">
           <div className="max-w-7xl mx-auto space-y-12">
             <div className="text-center max-w-3xl mx-auto space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#D6CFC7] text-xs font-mono uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#D6CFC7] text-xs font-mono uppercase tracking-wider backdrop-blur-md">
                 <Globe2 className="w-3.5 h-3.5 text-[#E0B27A]" />
                 <span>Global Client Portfolio</span>
               </div>
@@ -282,7 +294,7 @@ export default function StudioLandingPage() {
               {BRAND_PARTNERS.map((brand, i) => (
                 <div
                   key={i}
-                  className="p-6 rounded-2xl bg-[#0E1624] border border-white/10 hover:border-[#E0B27A]/40 text-center space-y-2 transition-all hover:scale-105 shadow-md"
+                  className="p-6 rounded-2xl bg-[#0E1624]/90 border border-white/10 hover:border-[#E0B27A]/40 text-center space-y-2 transition-all hover:scale-105 shadow-md backdrop-blur-md"
                 >
                   <div className="text-xl font-serif font-bold tracking-wider text-white uppercase">
                     {brand.name}
@@ -294,7 +306,7 @@ export default function StudioLandingPage() {
               ))}
             </div>
 
-            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-center text-xs font-mono text-[#A59E95] max-w-2xl mx-auto">
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-center text-xs font-mono text-[#A59E95] max-w-2xl mx-auto backdrop-blur-md">
               ✓ 100% Social Audited • BSCI Grade A • WRAP Gold • Sedex SMETA • FairWear Verified
             </div>
           </div>
@@ -302,11 +314,11 @@ export default function StudioLandingPage() {
       </section>
 
       {/* SECTION 10: SUSTAINABILITY & ESG (With Generative Floating Cotton Physics Canvas Background) */}
-      <section id="sustainability" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10 relative overflow-hidden rounded-3xl my-8 bg-[#09140D]">
+      <section id="sustainability" className="relative z-10 py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10 overflow-hidden rounded-3xl my-8 bg-[#09140D]/90 backdrop-blur-md shadow-2xl">
         {/* Generative Floating Cotton Background Animation */}
         <ESGBackgroundCottonCanvas />
 
-        <ScrollRevealSection direction="up" className="relative z-10">
+        <ScrollRevealSection direction="3d-tilt" className="relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 space-y-6">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#16241B]/90 border border-emerald-500/30 text-emerald-300 text-xs font-mono uppercase tracking-wider backdrop-blur-md">
@@ -368,11 +380,11 @@ export default function StudioLandingPage() {
       </section>
 
       {/* SECTION 11: CONTACT US / INQUIRY */}
-      <section id="contact-us" className="py-28 px-4 sm:px-6 lg:px-8 bg-[#080E17] border-t border-white/10 text-stone-100">
-        <ScrollRevealSection direction="up">
+      <section id="contact-us" className="relative z-10 py-28 px-4 sm:px-6 lg:px-8 bg-[#080E17]/80 border-t border-white/10 text-stone-100 backdrop-blur-sm">
+        <ScrollRevealSection direction="3d-tilt">
           <div className="max-w-7xl mx-auto space-y-12">
             <div className="text-center max-w-3xl mx-auto space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#142030] border border-amber-500/30 text-amber-300 text-xs font-mono uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#142030]/90 border border-amber-500/30 text-amber-300 text-xs font-mono uppercase tracking-wider backdrop-blur-md">
                 <Mail className="w-3.5 h-3.5" />
                 <span>Direct Merchandising & Sourcing Desk</span>
               </div>
@@ -386,7 +398,7 @@ export default function StudioLandingPage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               <div className="lg:col-span-5 space-y-6">
-                <div className="p-6 sm:p-8 rounded-3xl border border-white/10 space-y-6 bg-[#0E1624] shadow-2xl">
+                <div className="p-6 sm:p-8 rounded-3xl border border-white/10 space-y-6 bg-[#0E1624]/90 backdrop-blur-md shadow-2xl">
                   <div className="space-y-1">
                     <h3 className="text-xl font-serif font-bold text-white">
                       Bangladesh Headquarters & Mill
@@ -426,7 +438,7 @@ export default function StudioLandingPage() {
                 </div>
               </div>
 
-              <div className="lg:col-span-7 p-6 sm:p-8 rounded-3xl border border-white/10 bg-[#0E1624] shadow-2xl">
+              <div className="lg:col-span-7 p-6 sm:p-8 rounded-3xl border border-white/10 bg-[#0E1624]/90 backdrop-blur-md shadow-2xl">
                 {contactSubmitted ? (
                   <div className="py-12 text-center space-y-4">
                     <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-[#78A882] flex items-center justify-center mx-auto border border-emerald-500/40 shadow-xl">
@@ -529,7 +541,7 @@ export default function StudioLandingPage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="py-16 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-[#060A12] text-[#A59E95] text-xs font-mono">
+      <footer className="relative z-10 py-16 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-[#060A12]/95 text-[#A59E95] text-xs font-mono">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="space-y-1 text-center sm:text-left">
             <div className="font-serif font-bold text-white text-sm">THREADWORKS STUDIO — ENTERPRISE APPAREL ATELIER</div>
