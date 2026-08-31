@@ -89,7 +89,7 @@ export default function StudioLandingPage() {
           <span>Replay Intro FX</span>
         </button>
 
-        {/* TRANSITION 1: HERO -> PUSH-THROUGH (Hero scales down and recedes as camera pushes into 3D scene) */}
+        {/* TRANSITION 1: HERO -> PUSH-THROUGH (Hero scales down, blurs, and recedes into depth) */}
         <ChoreographedSection type="hero-push-through">
           <StudioHeroBanner />
         </ChoreographedSection>
@@ -100,7 +100,7 @@ export default function StudioLandingPage() {
         {/* DUAL-AXIS SCROLL-DRIVEN PARALLAX MARQUEE */}
         <CinematicParallaxMarquee />
 
-        {/* TRANSITION 3: 3D VISUALIZER -> VERTICAL ECOSYSTEM (Horizontal slide & curtain reveal) */}
+        {/* TRANSITION 3: 3D VISUALIZER -> VERTICAL ECOSYSTEM (Horizontal slide & Laser Seam Wipe) */}
         <ChoreographedSection id="about-us" type="visualizer-horizontal-slide" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 space-y-6">
@@ -165,7 +165,7 @@ export default function StudioLandingPage() {
           </div>
         </ChoreographedSection>
 
-        {/* TRANSITION 4: VERTICAL ECOSYSTEM -> SIX PILLARS (Signature 3D Book-Fold / Page-Turn) */}
+        {/* TRANSITION 4: VERTICAL ECOSYSTEM -> SIX PILLARS (Signature 3D Book Page-Turn) */}
         <ChoreographedSection id="our-features" type="book-page-turn" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#182335]/90 border border-amber-500/30 text-[#E0B27A] text-xs font-mono uppercase tracking-widest backdrop-blur-md shadow-xl">
@@ -230,12 +230,12 @@ export default function StudioLandingPage() {
           </div>
         </ChoreographedSection>
 
-        {/* TRANSITION 5: SIX PILLARS -> KEY FACTS (Depth Pass-Behind glass transition) */}
+        {/* TRANSITION 5: SIX PILLARS -> KEY FACTS (Multi-Plane Depth Pass-Behind) */}
         <ChoreographedSection type="depth-pass-behind">
           <FactsFigures />
         </ChoreographedSection>
 
-        {/* TRANSITION 6: KEY FACTS -> PRODUCT LINES (Vertical blind wipe reveal) */}
+        {/* TRANSITION 6: KEY FACTS -> PRODUCT LINES (High-Contrast Venetian Blind Wipe) */}
         <ChoreographedSection type="vertical-blind-wipe">
           <ProductCategoryShowcase />
         </ChoreographedSection>
@@ -258,12 +258,12 @@ export default function StudioLandingPage() {
           <LuxurySilkClothBanner />
         </ChoreographedSection>
 
-        {/* SECTION 8: INSIGHTS (PINBOARD GALLERY WITH REAL HIGH-RES ASSETS) */}
-        <ChoreographedSection type="parallax-lag-scale">
+        {/* TRANSITION 8: CORE VALUES -> INSIGHTS PINBOARD (3D Pendulum Tilt-Drop) */}
+        <ChoreographedSection type="corkboard-tilt-drop">
           <PinboardGallery />
         </ChoreographedSection>
 
-        {/* TRANSITION 8: CORE VALUES -> ESG / GREEN MILLS (Organic Color-Bleed Transition) */}
+        {/* TRANSITION 9: INSIGHTS -> ESG / GREEN MILLS (Expanding Bio-Wave Organic Bleed) */}
         <ChoreographedSection id="sustainability" type="organic-color-bleed" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden rounded-3xl my-8 bg-[#09140D]/95 backdrop-blur-md shadow-2xl">
           {/* Generative Floating Cotton Background Animation */}
           <ESGBackgroundCottonCanvas />
@@ -335,8 +335,8 @@ export default function StudioLandingPage() {
           </div>
         </ChoreographedSection>
 
-        {/* TRANSITION 9: ESG -> CLIENT PORTFOLIO (Parallax Lag Scale) */}
-        <ChoreographedSection id="trusted-customers" type="parallax-lag-scale" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        {/* TRANSITION 10: ESG -> CLIENT PORTFOLIO (Magnetic Grid Expansion) */}
+        <ChoreographedSection id="trusted-customers" type="magnetic-grid-expand" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="space-y-12">
             <div className="text-center max-w-3xl mx-auto space-y-4">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#182335]/90 border border-amber-500/30 text-[#E0B27A] text-xs font-mono uppercase tracking-widest backdrop-blur-md shadow-xl">
@@ -372,8 +372,8 @@ export default function StudioLandingPage() {
           </div>
         </ChoreographedSection>
 
-        {/* TRANSITION 10: FINAL SECTION -> CONTACT / FOOTER (Settle & Land) */}
-        <ChoreographedSection id="contact-us" type="settle-land" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        {/* TRANSITION 11: FINAL SECTION -> CONTACT DISPATCH DESK (Telemetry Settle & Laser Scanner Sweep) */}
+        <ChoreographedSection id="contact-us" type="telemetry-settle-land" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="space-y-12">
             <div className="text-center max-w-3xl mx-auto space-y-4">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#142030]/90 border border-amber-500/30 text-amber-300 text-xs font-mono uppercase tracking-wider backdrop-blur-md shadow-xl">
