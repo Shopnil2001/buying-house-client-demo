@@ -1,11 +1,14 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { Sparkles, ArrowRight, ShieldCheck, Leaf, Compass, Feather } from "lucide-react";
+import Image from "next/image";
+import { Sparkles, ArrowRight, ShieldCheck, Leaf, Compass, Feather, Play, Layers } from "lucide-react";
 import { playTactileClick } from "@/components/SoundEffects";
 
 export default function StudioHeroBanner() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
   const [activePreset, setActivePreset] = useState<"silk" | "linen" | "indigo">("silk");
 
   useEffect(() => {
@@ -16,7 +19,7 @@ export default function StudioHeroBanner() {
 
     let animId: number;
     let width = (canvas.width = canvas.parentElement?.clientWidth || 1200);
-    let height = (canvas.height = canvas.parentElement?.clientHeight || 750);
+    let height = (canvas.height = canvas.parentElement?.clientHeight || 800);
 
     const handleResize = () => {
       if (!canvas || !canvas.parentElement) return;
@@ -25,36 +28,17 @@ export default function StudioHeroBanner() {
     };
     window.addEventListener("resize", handleResize);
 
-    // Mouse interaction for organic wave distortion
-    let mouseX = width * 0.5;
-    let mouseY = height * 0.5;
-    let targetMouseX = mouseX;
-    let targetMouseY = mouseY;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      targetMouseX = e.clientX - rect.left;
-      targetMouseY = e.clientY - rect.top;
-    };
-    const handleMouseLeave = () => {
-      targetMouseX = width * 0.5;
-      targetMouseY = height * 0.5;
-    };
-
-    canvas.addEventListener("mousemove", handleMouseMove);
-    canvas.addEventListener("mouseleave", handleMouseLeave);
-
-    // Floating natural cotton fluff particles
-    const particleCount = 28;
+    // Floating natural cotton fibers
+    const particleCount = 35;
     const particles: { x: number; y: number; vx: number; vy: number; radius: number; alpha: number }[] = [];
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.3 + 0.1,
-        vy: -Math.random() * 0.4 - 0.1,
-        radius: Math.random() * 5 + 2,
-        alpha: Math.random() * 0.4 + 0.15,
+        vx: (Math.random() - 0.5) * 0.4 + 0.1,
+        vy: -Math.random() * 0.4 - 0.15,
+        radius: Math.random() * 4 + 2,
+        alpha: Math.random() * 0.5 + 0.2,
       });
     }
 
@@ -62,126 +46,9 @@ export default function StudioHeroBanner() {
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);
+      time += 0.012;
 
-      time += 0.01;
-      mouseX += (targetMouseX - mouseX) * 0.05;
-      mouseY += (targetMouseY - mouseY) * 0.05;
-
-      // Deep, soothing, warm textile background gradient
-      const bgGrad = ctx.createLinearGradient(0, 0, width, height);
-      if (activePreset === "silk") {
-        bgGrad.addColorStop(0, "#101928");
-        bgGrad.addColorStop(0.5, "#152033");
-        bgGrad.addColorStop(1, "#0C1320");
-      } else if (activePreset === "linen") {
-        bgGrad.addColorStop(0, "#1C1713");
-        bgGrad.addColorStop(0.5, "#26201A");
-        bgGrad.addColorStop(1, "#14100D");
-      } else {
-        bgGrad.addColorStop(0, "#0E1826");
-        bgGrad.addColorStop(0.5, "#122033");
-        bgGrad.addColorStop(1, "#09101A");
-      }
-      ctx.fillStyle = bgGrad;
-      ctx.fillRect(0, 0, width, height);
-
-      // Render flowing, organic fabric waves with soothing pastel tones
-      const layers = activePreset === "silk" ? [
-        {
-          fill: "rgba(212, 175, 55, 0.08)",
-          stroke: "rgba(212, 175, 55, 0.25)",
-          speed: 0.8,
-          amplitude: 45,
-          freq: 0.0035,
-          baseY: height * 0.58,
-        },
-        {
-          fill: "rgba(194, 103, 71, 0.12)",
-          stroke: "rgba(194, 103, 71, 0.3)",
-          speed: 1.1,
-          amplitude: 60,
-          freq: 0.0028,
-          baseY: height * 0.65,
-        },
-        {
-          fill: "rgba(61, 90, 69, 0.15)",
-          stroke: "rgba(100, 140, 110, 0.35)",
-          speed: 0.6,
-          amplitude: 50,
-          freq: 0.004,
-          baseY: height * 0.72,
-        },
-      ] : activePreset === "linen" ? [
-        {
-          fill: "rgba(212, 185, 150, 0.12)",
-          stroke: "rgba(212, 185, 150, 0.3)",
-          speed: 0.7,
-          amplitude: 40,
-          freq: 0.003,
-          baseY: height * 0.6,
-        },
-        {
-          fill: "rgba(180, 140, 100, 0.15)",
-          stroke: "rgba(180, 140, 100, 0.35)",
-          speed: 1.0,
-          amplitude: 55,
-          freq: 0.0025,
-          baseY: height * 0.68,
-        },
-      ] : [
-        {
-          fill: "rgba(35, 60, 95, 0.25)",
-          stroke: "rgba(60, 100, 150, 0.4)",
-          speed: 0.9,
-          amplitude: 50,
-          freq: 0.0032,
-          baseY: height * 0.62,
-        },
-        {
-          fill: "rgba(200, 120, 90, 0.12)",
-          stroke: "rgba(200, 120, 90, 0.3)",
-          speed: 1.2,
-          amplitude: 45,
-          freq: 0.004,
-          baseY: height * 0.7,
-        },
-      ];
-
-      layers.forEach((layer) => {
-        ctx.save();
-        ctx.beginPath();
-        ctx.moveTo(0, height);
-
-        for (let x = 0; x <= width; x += 18) {
-          // Gentle tactile mouse wave attraction
-          const distToMouse = Math.abs(x - mouseX);
-          const mouseLift = distToMouse < 220 
-            ? Math.cos((distToMouse / 220) * (Math.PI / 2)) * 30 
-            : 0;
-
-          const y =
-            layer.baseY +
-            Math.sin(x * layer.freq + time * layer.speed) * layer.amplitude +
-            Math.cos(x * layer.freq * 1.6 + time * 0.5) * (layer.amplitude * 0.35) -
-            mouseLift;
-
-          if (x === 0) ctx.lineTo(0, y);
-          else ctx.lineTo(x, y);
-        }
-
-        ctx.lineTo(width, height);
-        ctx.closePath();
-
-        ctx.fillStyle = layer.fill;
-        ctx.fill();
-
-        ctx.strokeStyle = layer.stroke;
-        ctx.lineWidth = 1.8;
-        ctx.stroke();
-        ctx.restore();
-      });
-
-      // Render floating organic cotton particles
+      // Render floating golden fiber motes
       particles.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
@@ -194,7 +61,7 @@ export default function StudioHeroBanner() {
 
         ctx.save();
         ctx.fillStyle = `rgba(245, 239, 235, ${p.alpha})`;
-        ctx.shadowColor = "rgba(245, 239, 235, 0.3)";
+        ctx.shadowColor = "#D4AF37";
         ctx.shadowBlur = 10;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
@@ -202,13 +69,52 @@ export default function StudioHeroBanner() {
         ctx.restore();
       });
 
-      // Subtle warm radial sheen
-      const sheenX = ((Math.sin(time * 0.5) + 1) / 2) * width;
-      const sheen = ctx.createRadialGradient(sheenX, height * 0.45, 30, sheenX, height * 0.45, width * 0.4);
-      sheen.addColorStop(0, "rgba(245, 235, 220, 0.05)");
-      sheen.addColorStop(1, "rgba(0, 0, 0, 0)");
-      ctx.fillStyle = sheen;
-      ctx.fillRect(0, 0, width, height);
+      // Flowing silk waves
+      const waves = [
+        {
+          fill: "rgba(224, 178, 122, 0.1)",
+          stroke: "rgba(224, 178, 122, 0.35)",
+          speed: 0.8,
+          amplitude: 45,
+          freq: 0.003,
+          baseY: height * 0.65,
+        },
+        {
+          fill: "rgba(194, 103, 71, 0.14)",
+          stroke: "rgba(194, 103, 71, 0.4)",
+          speed: 1.1,
+          amplitude: 55,
+          freq: 0.0025,
+          baseY: height * 0.72,
+        },
+      ];
+
+      waves.forEach((w) => {
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(0, height);
+
+        for (let x = 0; x <= width; x += 18) {
+          const y =
+            w.baseY +
+            Math.sin(x * w.freq + time * w.speed) * w.amplitude +
+            Math.cos(x * w.freq * 1.5 + time * 0.6) * (w.amplitude * 0.3);
+
+          if (x === 0) ctx.lineTo(0, y);
+          else ctx.lineTo(x, y);
+        }
+
+        ctx.lineTo(width, height);
+        ctx.closePath();
+
+        ctx.fillStyle = w.fill;
+        ctx.fill();
+
+        ctx.strokeStyle = w.stroke;
+        ctx.lineWidth = 1.6;
+        ctx.stroke();
+        ctx.restore();
+      });
 
       animId = requestAnimationFrame(render);
     };
@@ -218,96 +124,106 @@ export default function StudioHeroBanner() {
     return () => {
       cancelAnimationFrame(animId);
       window.removeEventListener("resize", handleResize);
-      canvas.removeEventListener("mousemove", handleMouseMove);
-      canvas.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, [activePreset]);
+  }, []);
+
+  // Mouse Parallax movement tracking
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    setMouseOffset({ x: x * 30, y: y * 30 });
+  };
 
   return (
-    <div className="relative min-h-[92vh] flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-24">
-      {/* Background Interactive Organic Cloth Canvas */}
-      <div className="absolute inset-0 z-0 pointer-events-auto">
-        <canvas ref={canvasRef} className="w-full h-full cursor-pointer" />
+    <div
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      className="relative min-h-[96vh] flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-24 bg-[#080E17]"
+    >
+      {/* 1. Cinematic Background Layer with Parallax Macro Silk Image */}
+      <div 
+        className="absolute inset-0 z-0 transition-transform duration-700 ease-out scale-110 opacity-30"
+        style={{
+          transform: `translate3d(${mouseOffset.x * -0.6}px, ${mouseOffset.y * -0.6}px, 0)`,
+        }}
+      >
+        <Image
+          src="/images/silk_macro.jpg"
+          alt="Luxury Bengal Silk Macro"
+          fill
+          priority
+          className="object-cover object-center filter saturate-125"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#080E17] via-[#080E17]/70 to-[#080E17]/80" />
       </div>
 
-      {/* Gentle Radial Overlay */}
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#0E1520] via-transparent to-[#0E1520]/80" />
+      {/* 2. Interactive Fluid Waves & Floating Fibers Canvas */}
+      <div className="absolute inset-0 z-[1] pointer-events-none">
+        <canvas ref={canvasRef} className="w-full h-full" />
+      </div>
 
-      {/* Hero Content */}
-      <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8 animate-in fade-in slide-in-from-bottom-6 duration-1000">
-        {/* Subtle Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#182335]/90 border border-amber-500/30 text-amber-200 text-xs font-mono uppercase tracking-widest backdrop-blur-md shadow-xl">
-          <Feather className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
+      {/* 3. Hero Editorial Content (Midground with Parallax) */}
+      <div 
+        className="relative z-10 max-w-5xl mx-auto text-center space-y-8 transition-transform duration-500 ease-out"
+        style={{
+          transform: `translate3d(${mouseOffset.x * 0.3}px, ${mouseOffset.y * 0.3}px, 0)`,
+        }}
+      >
+        {/* Subtle Luxury Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#142030]/90 border border-amber-500/30 text-amber-200 text-xs font-mono uppercase tracking-widest backdrop-blur-md shadow-2xl">
+          <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-spin" style={{ animationDuration: "10s" }} />
           <span>Premier Bangladesh Sourcing & Manufacturing Atelier</span>
         </div>
 
-        {/* Soothing Editorial Headline with Cormorant Garamond Serif */}
+        {/* Editorial Headline */}
         <div className="space-y-4">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-light text-[#FAF7F2] tracking-tight leading-[1.05]">
-            Crafted with <span className="italic font-normal text-[#E0B27A]">Tactile Mastery</span> & Sustainable Integrity
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-light text-[#FAF7F2] tracking-tight leading-[1.03]">
+            Crafted with <span className="italic text-[#E0B27A]">Tactile Mastery</span> & Cinematic Precision
           </h1>
           <p className="max-w-2xl mx-auto text-[#D6CFC7] text-base sm:text-lg md:text-xl font-light leading-relaxed font-sans">
             A vertically integrated textile powerhouse bridging five centuries of Bengal craftsmanship with modern automated knitting, laser denim finishing, and certified LEED Platinum sustainability.
           </p>
         </div>
 
-        {/* Preset Fabric Theme Toggle */}
-        <div className="inline-flex items-center gap-2 p-1.5 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-md text-xs font-mono">
-          <span className="text-[#A59E95] px-2 text-[11px] uppercase">Drape Mood:</span>
-          {(["silk", "linen", "indigo"] as const).map((preset) => (
-            <button
-              key={preset}
-              onClick={() => {
-                playTactileClick("soft");
-                setActivePreset(preset);
-              }}
-              className={`px-3 py-1.5 rounded-xl capitalize font-medium transition-all ${
-                activePreset === preset
-                  ? "bg-[#C26747] text-white shadow-md shadow-orange-950 font-bold"
-                  : "text-[#D6CFC7] hover:text-white hover:bg-white/5"
-              }`}
-            >
-              {preset} Weave
-            </button>
-          ))}
-        </div>
-
-        {/* CTA Buttons */}
+        {/* CTA Group */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+          <a
+            href="#spline-3d-visualizer"
+            onClick={() => playTactileClick("switch")}
+            className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-[#C26747] via-[#D48259] to-[#C26747] hover:from-[#B55C3E] hover:to-[#B55C3E] text-white font-semibold text-sm shadow-2xl shadow-orange-950/60 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 group"
+          >
+            <Play className="w-4 h-4 fill-white" />
+            <span>Launch 3D Spatial Visualizer</span>
+          </a>
+
           <a
             href="#our-products"
             onClick={() => playTactileClick("soft")}
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-[#C26747] via-[#D48259] to-[#C26747] hover:from-[#B55C3E] hover:to-[#B55C3E] text-white font-semibold text-sm shadow-xl shadow-orange-950/50 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 group"
+            className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-[#FAF7F2] hover:text-white font-medium text-sm transition-all flex items-center justify-center gap-2 backdrop-blur-md"
           >
-            <span>Explore Product Collections</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </a>
-
-          <a
-            href="#insights-pinboard"
-            onClick={() => playTactileClick("soft")}
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-[#EFEBE4] hover:text-white font-medium text-sm transition-all flex items-center justify-center gap-2"
-          >
-            <span>Atelier Moodboard</span>
+            <span>Explore Collections</span>
+            <ArrowRight className="w-4 h-4" />
           </a>
         </div>
 
-        {/* Soothing Key Credential Pills */}
+        {/* 3D Glassmorphic Telemetry Cards */}
         <div className="pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">
-          <div className="space-y-0.5">
-            <div className="font-serif text-2xl text-[#E0B27A] font-bold">150M+</div>
+          <div className="p-4 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-md space-y-1 shadow-lg hover:scale-105 transition-transform">
+            <div className="font-serif text-2xl sm:text-3xl text-[#E0B27A] font-bold">150M+</div>
             <div className="text-[11px] text-[#A59E95] font-mono">Finished Units / Year</div>
           </div>
-          <div className="space-y-0.5">
-            <div className="font-serif text-2xl text-[#FAF7F2] font-bold">5 LEED Platinum</div>
+          <div className="p-4 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-md space-y-1 shadow-lg hover:scale-105 transition-transform">
+            <div className="font-serif text-2xl sm:text-3xl text-[#FAF7F2] font-bold">5 LEED Platinum</div>
             <div className="text-[11px] text-[#A59E95] font-mono">Zero-Discharge Facilities</div>
           </div>
-          <div className="space-y-0.5">
-            <div className="font-serif text-2xl text-[#E0B27A] font-bold">21 – 30 Days</div>
+          <div className="p-4 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-md space-y-1 shadow-lg hover:scale-105 transition-transform">
+            <div className="font-serif text-2xl sm:text-3xl text-[#E0B27A] font-bold">21 – 30 Days</div>
             <div className="text-[11px] text-[#A59E95] font-mono">Fast-Track Turnaround</div>
           </div>
-          <div className="space-y-0.5">
-            <div className="font-serif text-2xl text-[#FAF7F2] font-bold">100% GOTS</div>
+          <div className="p-4 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-md space-y-1 shadow-lg hover:scale-105 transition-transform">
+            <div className="font-serif text-2xl sm:text-3xl text-[#FAF7F2] font-bold">100% GOTS</div>
             <div className="text-[11px] text-[#A59E95] font-mono">Traceable Organic Cotton</div>
           </div>
         </div>

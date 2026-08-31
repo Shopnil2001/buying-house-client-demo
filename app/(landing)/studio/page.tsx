@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import StudioCinematicReveal from "./components/StudioCinematicReveal";
 import StudioHeroBanner from "./components/StudioHeroBanner";
+import Spline3DFabricCanvas from "./components/Spline3DFabricCanvas";
 import ScrollRevealSection from "./components/ScrollRevealSection";
 import LuxurySilkClothBanner from "./components/LuxurySilkClothBanner";
 import PinboardGallery from "./components/PinboardGallery";
@@ -27,7 +28,8 @@ import {
   Send,
   Droplets,
   Sun,
-  Feather
+  Feather,
+  Box
 } from "lucide-react";
 import { playTactileClick } from "@/components/SoundEffects";
 
@@ -65,7 +67,7 @@ export default function StudioLandingPage() {
   };
 
   return (
-    <div className="bg-[#0A101A] text-[#FAF7F2] min-h-screen relative selection:bg-[#C26747]/30 selection:text-amber-200">
+    <div className="bg-[#080E17] text-[#FAF7F2] min-h-screen relative selection:bg-[#C26747]/30 selection:text-amber-200">
       {/* 1. Bespoke After-Effects Level Cinematic Opening */}
       <StudioCinematicReveal key={revealKey} />
 
@@ -79,7 +81,7 @@ export default function StudioLandingPage() {
         <span>Replay Intro FX</span>
       </button>
 
-      {/* SECTION 1: HERO BANNER (With Eye-Catching Organic Fabric Canvas Animation) */}
+      {/* SECTION 1: HERO BANNER (With Cinematic Parallax Macro Silk & Fluid Waves) */}
       <StudioHeroBanner />
 
       {/* SECTION 2: ABOUT US */}
@@ -87,7 +89,7 @@ export default function StudioLandingPage() {
         <ScrollRevealSection direction="up">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#182335] border border-amber-500/30 text-amber-300 text-xs font-mono uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#142030] border border-amber-500/30 text-amber-300 text-xs font-mono uppercase tracking-wider">
                 <Building2 className="w-3.5 h-3.5" />
                 <span>Corporate Heritage & Manufacturing Presence</span>
               </div>
@@ -117,7 +119,7 @@ export default function StudioLandingPage() {
             </div>
 
             <div className="lg:col-span-6">
-              <div className="p-6 sm:p-8 rounded-3xl border border-white/10 space-y-6 bg-[#111926] shadow-xl">
+              <div className="p-6 sm:p-8 rounded-3xl border border-white/10 space-y-6 bg-[#0E1624] shadow-2xl">
                 <h3 className="text-xl font-serif font-bold text-white">
                   Our Sourcing Advantage
                 </h3>
@@ -130,7 +132,7 @@ export default function StudioLandingPage() {
                     "Audited Living Wage & 100% Social Compliance Transparency",
                     "ZDHC Level 3 Certified Low-Impact Chemistry Dyeing"
                   ].map((item, idx) => (
-                    <div key={idx} className="flex items-center gap-3 p-3.5 rounded-xl bg-black/30 border border-white/5 text-[#EFEBE4]">
+                    <div key={idx} className="flex items-center gap-3 p-3.5 rounded-xl bg-black/40 border border-white/5 text-[#EFEBE4]">
                       <Check className="w-4 h-4 text-[#E0B27A] flex-shrink-0" />
                       <span>{item}</span>
                     </div>
@@ -142,7 +144,27 @@ export default function StudioLandingPage() {
         </ScrollRevealSection>
       </section>
 
-      {/* SECTION 3: OUR FEATURES */}
+      {/* SECTION 3: INTERACTIVE 3D SPLINE-LIKE SPATIAL TEXTILE ENGINE */}
+      <section id="spline-3d-visualizer" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10 space-y-8">
+        <ScrollRevealSection direction="up">
+          <div className="text-center max-w-3xl mx-auto space-y-4 mb-8">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#182335] border border-amber-500/30 text-amber-200 text-xs font-mono uppercase tracking-widest">
+              <Box className="w-3.5 h-3.5 text-amber-400" />
+              <span>Real-Time 3D Spatial Visualizer</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light text-[#FAF7F2] tracking-tight">
+              Interactive 3D Fabric & Yarn Morph Engine
+            </h2>
+            <p className="text-sm sm:text-base text-[#D6CFC7]">
+              Orbit and manipulate parametric silk knot sculptures, spinning yarn spools, and liquid cloth meshes in real-time 3D space with specular lighting and particle depth.
+            </p>
+          </div>
+
+          <Spline3DFabricCanvas />
+        </ScrollRevealSection>
+      </section>
+
+      {/* SECTION 4: OUR FEATURES */}
       <section id="our-features" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10">
         <ScrollRevealSection direction="up">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
@@ -193,7 +215,7 @@ export default function StudioLandingPage() {
             ].map((feat) => (
               <div
                 key={feat.num}
-                className="p-6 sm:p-8 rounded-3xl bg-[#111824] border border-white/10 hover:border-[#E0B27A]/40 transition-all duration-300 space-y-4 shadow-lg hover:shadow-xl"
+                className="p-6 sm:p-8 rounded-3xl bg-[#0E1624] border border-white/10 hover:border-[#E0B27A]/40 transition-all duration-300 space-y-4 shadow-lg hover:shadow-2xl"
               >
                 <span className="font-serif text-2xl font-bold text-[#E0B27A]">{feat.num}</span>
                 <h3 className="text-lg font-serif font-bold text-white">{feat.title}</h3>
@@ -204,17 +226,17 @@ export default function StudioLandingPage() {
         </ScrollRevealSection>
       </section>
 
-      {/* SECTION 4: KEY FACTS & FIGURES */}
+      {/* SECTION 5: KEY FACTS & FIGURES */}
       <ScrollRevealSection direction="up">
         <FactsFigures />
       </ScrollRevealSection>
 
-      {/* SECTION 5: OUR PRODUCTS */}
+      {/* SECTION 6: OUR PRODUCTS */}
       <ScrollRevealSection direction="up">
         <ProductCategoryShowcase />
       </ScrollRevealSection>
 
-      {/* SECTION 6: OUR PHILOSOPHY (LUXURY SILK CLOTH BANNER) */}
+      {/* SECTION 7: OUR PHILOSOPHY (LUXURY SILK CLOTH BANNER) */}
       <section id="our-philosophy" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10 space-y-12">
         <ScrollRevealSection direction="up">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-10">
@@ -234,13 +256,13 @@ export default function StudioLandingPage() {
         </ScrollRevealSection>
       </section>
 
-      {/* SECTION 7: INSIGHTS (PINBOARD GALLERY) */}
+      {/* SECTION 8: INSIGHTS (PINBOARD GALLERY WITH REAL HIGH-RES ASSETS) */}
       <ScrollRevealSection direction="up">
         <PinboardGallery />
       </ScrollRevealSection>
 
-      {/* SECTION 8: TRUSTED CUSTOMERS / GLOBAL BRAND PARTNERS */}
-      <section id="trusted-customers" className="py-28 px-4 sm:px-6 lg:px-8 bg-[#090F18] border-t border-white/10 text-stone-100">
+      {/* SECTION 9: TRUSTED CUSTOMERS / GLOBAL BRAND PARTNERS */}
+      <section id="trusted-customers" className="py-28 px-4 sm:px-6 lg:px-8 bg-[#080E17] border-t border-white/10 text-stone-100">
         <ScrollRevealSection direction="up">
           <div className="max-w-7xl mx-auto space-y-12">
             <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -260,7 +282,7 @@ export default function StudioLandingPage() {
               {BRAND_PARTNERS.map((brand, i) => (
                 <div
                   key={i}
-                  className="p-6 rounded-2xl bg-[#111926] border border-white/10 hover:border-[#E0B27A]/40 text-center space-y-2 transition-all hover:scale-105 shadow-md"
+                  className="p-6 rounded-2xl bg-[#0E1624] border border-white/10 hover:border-[#E0B27A]/40 text-center space-y-2 transition-all hover:scale-105 shadow-md"
                 >
                   <div className="text-xl font-serif font-bold tracking-wider text-white uppercase">
                     {brand.name}
@@ -279,9 +301,9 @@ export default function StudioLandingPage() {
         </ScrollRevealSection>
       </section>
 
-      {/* SECTION 9: SUSTAINABILITY & ESG (With Generative Floating Cotton Physics Canvas Background) */}
+      {/* SECTION 10: SUSTAINABILITY & ESG (With Generative Floating Cotton Physics Canvas Background) */}
       <section id="sustainability" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10 relative overflow-hidden rounded-3xl my-8 bg-[#09140D]">
-        {/* Generative Floating Cotton Background Animation from Sustainable page */}
+        {/* Generative Floating Cotton Background Animation */}
         <ESGBackgroundCottonCanvas />
 
         <ScrollRevealSection direction="up" className="relative z-10">
@@ -345,12 +367,12 @@ export default function StudioLandingPage() {
         </ScrollRevealSection>
       </section>
 
-      {/* SECTION 10: CONTACT US / INQUIRY */}
-      <section id="contact-us" className="py-28 px-4 sm:px-6 lg:px-8 bg-[#090F18] border-t border-white/10 text-stone-100">
+      {/* SECTION 11: CONTACT US / INQUIRY */}
+      <section id="contact-us" className="py-28 px-4 sm:px-6 lg:px-8 bg-[#080E17] border-t border-white/10 text-stone-100">
         <ScrollRevealSection direction="up">
           <div className="max-w-7xl mx-auto space-y-12">
             <div className="text-center max-w-3xl mx-auto space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182335] border border-amber-500/30 text-amber-300 text-xs font-mono uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#142030] border border-amber-500/30 text-amber-300 text-xs font-mono uppercase tracking-wider">
                 <Mail className="w-3.5 h-3.5" />
                 <span>Direct Merchandising & Sourcing Desk</span>
               </div>
@@ -364,7 +386,7 @@ export default function StudioLandingPage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               <div className="lg:col-span-5 space-y-6">
-                <div className="p-6 sm:p-8 rounded-3xl border border-white/10 space-y-6 bg-[#111926] shadow-xl">
+                <div className="p-6 sm:p-8 rounded-3xl border border-white/10 space-y-6 bg-[#0E1624] shadow-2xl">
                   <div className="space-y-1">
                     <h3 className="text-xl font-serif font-bold text-white">
                       Bangladesh Headquarters & Mill
@@ -404,7 +426,7 @@ export default function StudioLandingPage() {
                 </div>
               </div>
 
-              <div className="lg:col-span-7 p-6 sm:p-8 rounded-3xl border border-white/10 bg-[#111926] shadow-xl">
+              <div className="lg:col-span-7 p-6 sm:p-8 rounded-3xl border border-white/10 bg-[#0E1624] shadow-2xl">
                 {contactSubmitted ? (
                   <div className="py-12 text-center space-y-4">
                     <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-[#78A882] flex items-center justify-center mx-auto border border-emerald-500/40 shadow-xl">
@@ -469,7 +491,7 @@ export default function StudioLandingPage() {
                         <select
                           value={contactForm.category}
                           onChange={(e) => setContactForm({ ...contactForm, category: e.target.value })}
-                          className="w-full bg-[#0D1420] border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[#E0B27A]"
+                          className="w-full bg-[#080E17] border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[#E0B27A]"
                         >
                           <option>Hosiery & Performance Socks</option>
                           <option>Seamless Engineered Activewear</option>
@@ -507,7 +529,7 @@ export default function StudioLandingPage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="py-16 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-[#070D16] text-[#A59E95] text-xs font-mono">
+      <footer className="py-16 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-[#060A12] text-[#A59E95] text-xs font-mono">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="space-y-1 text-center sm:text-left">
             <div className="font-serif font-bold text-white text-sm">THREADWORKS STUDIO — ENTERPRISE APPAREL ATELIER</div>

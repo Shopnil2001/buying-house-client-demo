@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { 
   Bookmark, 
   Camera, 
@@ -19,7 +20,8 @@ interface PinItem {
   date: string;
   rotation: string;
   noteText?: string;
-  imageBg: string;
+  imageSrc?: string;
+  imageBg?: string;
   author: string;
   pinColor: string;
   tapePosition?: "top" | "corner" | "none";
@@ -34,7 +36,7 @@ const PIN_ITEMS: PinItem[] = [
     date: "August 2026",
     rotation: "-rotate-2",
     noteText: "High-gauge 32-gauge knitting machines running 100% GOTS combed organic cotton at 450 RPM.",
-    imageBg: "linear-gradient(135deg, #1A2B4C 0%, #0E1726 100%)",
+    imageSrc: "/images/knitting_mill.jpg",
     author: "Engr. Tanvir Ahmed (Production Lead)",
     pinColor: "bg-rose-500",
     tapePosition: "top",
@@ -55,25 +57,25 @@ const PIN_ITEMS: PinItem[] = [
   {
     id: "pin-3",
     type: "polaroid",
-    title: "3D CLO Digital Twin Sample Approval",
-    category: "R&D Lab",
+    title: "Organic Farm Traceable Cotton Harvest",
+    category: "Sustainability",
     date: "August 2026",
     rotation: "rotate-1",
-    noteText: "Eliminated 3 physical prototype rounds for European retailer drop. Pattern graded directly to Gerber automated cutting.",
-    imageBg: "linear-gradient(135deg, #0A1E24 0%, #003B46 100%)",
-    author: "Nadia Rahman (3D CAD Lead)",
+    noteText: "100% hand-picked organic cotton bolls with zero synthetic pesticides, direct farm-to-spinning mill traceability.",
+    imageSrc: "/images/organic_cotton.jpg",
+    author: "Nadia Rahman (Sourcing Lead)",
     pinColor: "bg-cyan-400",
     tapePosition: "none",
   },
   {
     id: "pin-4",
     type: "swatch",
-    title: "Indigo Melange Ring-Spun French Terry",
+    title: "Bengal Indigo Silk & Cashmere Weave",
     category: "Design Mood",
     date: "SS27 Capsule",
     rotation: "-rotate-3",
-    noteText: "340 GSM • 95% Organic Cotton / 5% Elastane • Carbon Peached Exterior with Loopback Backing.",
-    imageBg: "repeating-linear-gradient(45deg, #182B49, #182B49 4px, #122035 4px, #122035 8px)",
+    noteText: "340 GSM • 95% Organic Cotton / 5% Silk • Carbon Peached Exterior with Hand-Finished Selvedge.",
+    imageSrc: "/images/silk_macro.jpg",
     author: "Atelier Fabric R&D",
     pinColor: "bg-emerald-500",
     tapePosition: "top",
@@ -85,7 +87,7 @@ const PIN_ITEMS: PinItem[] = [
     category: "R&D Lab",
     date: "August 2026",
     rotation: "-rotate-1",
-    noteText: "Zero potassium permanganate (PP) spray. 100% waterless laser whispering and ozone fading on 13.5 oz denim.",
+    noteText: "Zero potassium permanganate (PP) spray. 100% waterless laser whiskering and ozone fading on 13.5 oz denim.",
     imageBg: "#BBF7D0",
     author: "Sourcing Tech Lead",
     pinColor: "bg-rose-400",
@@ -94,13 +96,13 @@ const PIN_ITEMS: PinItem[] = [
   {
     id: "pin-6",
     type: "polaroid",
-    title: "LEED Platinum Rooftop Solar Microgrid",
-    category: "Sustainability",
+    title: "Automated Spinning Spool Precision Line",
+    category: "Mill Floor",
     date: "June 2026",
     rotation: "rotate-2",
-    noteText: "1.4 MW photovoltaic array on Gazipur facility rooftop offsetting 42.8% of daily spinning load.",
-    imageBg: "linear-gradient(135deg, #152819 0%, #2D5033 100%)",
-    author: "Green Council BD",
+    noteText: "120,000 automated Rieter spindles running continuous combed compact ring-spun yarn counts.",
+    imageSrc: "/images/knitting_mill.jpg",
+    author: "Production QA Lead",
     pinColor: "bg-yellow-400",
     tapePosition: "top",
   },
@@ -112,7 +114,7 @@ const PIN_ITEMS: PinItem[] = [
     date: "SS27 Active",
     rotation: "-rotate-2",
     noteText: "Santoni seamless knitting with multi-zone ribbing, sweat-wicking ventilation channels, and zero side seams.",
-    imageBg: "linear-gradient(135deg, #2A1B0E 0%, #4A2800 100%)",
+    imageBg: "linear-gradient(135deg, #1C2636 0%, #121A28 100%)",
     author: "Performance Lab",
     pinColor: "bg-orange-500",
     tapePosition: "none",
@@ -141,32 +143,33 @@ export default function PinboardGallery() {
     : PIN_ITEMS.filter((item) => item.category === filter);
 
   return (
-    <section id="insights-pinboard" className="py-24 px-4 sm:px-6 lg:px-8 bg-[#0D131F] border-t border-white/10 text-stone-100 relative overflow-hidden">
+    <section id="insights-pinboard" className="py-28 px-4 sm:px-6 lg:px-8 bg-[#0B121D] border-t border-white/10 text-stone-100 relative overflow-hidden">
+      {/* Subtle moodboard background grid */}
       <div 
-        className="absolute inset-0 opacity-20 pointer-events-none"
+        className="absolute inset-0 opacity-15 pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px), radial-gradient(#d4af37 1px, #0d131f 1px)",
-          backgroundSize: "28px 28px",
-          backgroundPosition: "0 0, 14px 14px",
+          backgroundImage: "radial-gradient(#FAF7F2 1px, transparent 1px), radial-gradient(#D4AF37 1px, #0B121D 1px)",
+          backgroundSize: "32px 32px",
+          backgroundPosition: "0 0, 16px 16px",
         }}
       />
 
       <div className="max-w-7xl mx-auto space-y-12 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/10">
           <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-950/70 border border-amber-500/40 text-amber-300 text-xs font-mono uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#182335] border border-amber-500/30 text-amber-200 text-xs font-mono uppercase tracking-widest">
               <Bookmark className="w-3.5 h-3.5" />
               <span>Atelier Moodboard & Factory Insights</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase font-sans tracking-tight">
-              Live R&D Pinboard & Factory Snaps
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light text-[#FAF7F2] tracking-tight">
+              Live R&D Pinboard & Mill Snaps
             </h2>
-            <p className="text-sm sm:text-base text-stone-300">
-              Explore real-time design swatches, laboratory test slips, factory floor snapshots, and technical production memos pinned straight from our Dhaka and Gazipur engineering facilities.
+            <p className="text-sm sm:text-base text-[#D6CFC7]">
+              Explore high-resolution mill snapshots, laboratory test slips, physical fabric swatches, and technical production memos pinned straight from our Dhaka and Gazipur engineering facilities.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-1.5 bg-black/60 p-1.5 rounded-2xl border border-white/10 text-xs font-mono">
+          <div className="flex flex-wrap items-center gap-1.5 bg-black/50 p-1.5 rounded-2xl border border-white/10 text-xs font-mono">
             {["All", "R&D Lab", "Mill Floor", "Sustainability", "Design Mood"].map((cat) => (
               <button
                 key={cat}
@@ -176,8 +179,8 @@ export default function PinboardGallery() {
                 }}
                 className={`px-3 py-1.5 rounded-xl transition-all ${
                   filter === cat
-                    ? "bg-amber-500 text-stone-950 font-bold shadow-lg"
-                    : "text-stone-400 hover:text-white hover:bg-white/5"
+                    ? "bg-[#C26747] text-white font-bold shadow-lg"
+                    : "text-[#A59E95] hover:text-white hover:bg-white/5"
                 }`}
               >
                 {cat}
@@ -203,39 +206,48 @@ export default function PinboardGallery() {
                   isSticky 
                     ? "p-5 rounded-sm shadow-xl text-stone-900 font-sans" 
                     : isPolaroid
-                    ? "p-4 rounded-xl bg-stone-100 text-stone-900 shadow-2xl"
-                    : "p-5 rounded-2xl bg-stone-900 border border-white/15 text-stone-100 shadow-2xl"
+                    ? "p-4 rounded-2xl bg-[#F5EFEB] text-stone-900 shadow-2xl"
+                    : "p-5 rounded-2xl bg-[#121A28] border border-white/15 text-stone-100 shadow-2xl"
                 }`}
                 style={{
                   backgroundColor: isSticky ? item.imageBg : undefined,
                 }}
               >
+                {/* Realistic Push Pin */}
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20 flex items-center justify-center">
                   <div className={`w-4 h-4 rounded-full ${item.pinColor} border-2 border-white shadow-md ring-1 ring-black/30 flex items-center justify-center`}>
                     <div className="w-1 h-1 bg-white rounded-full opacity-80" />
                   </div>
                 </div>
 
+                {/* Masking Tape */}
                 {item.tapePosition === "top" && (
-                  <div className="absolute -top-3 left-6 w-16 h-5 bg-amber-100/70 backdrop-blur-sm -rotate-6 border-t border-b border-amber-200/50 shadow-sm pointer-events-none z-10" />
+                  <div className="absolute -top-3 left-6 w-16 h-5 bg-amber-100/75 backdrop-blur-sm -rotate-6 border-t border-b border-amber-200/50 shadow-sm pointer-events-none z-10" />
                 )}
                 {item.tapePosition === "corner" && (
-                  <div className="absolute -top-2 -right-2 w-12 h-4 bg-amber-100/70 backdrop-blur-sm rotate-45 border-t border-b border-amber-200/50 shadow-sm pointer-events-none z-10" />
+                  <div className="absolute -top-2 -right-2 w-12 h-4 bg-amber-100/75 backdrop-blur-sm rotate-45 border-t border-b border-amber-200/50 shadow-sm pointer-events-none z-10" />
                 )}
 
                 {isPolaroid && (
                   <div className="space-y-3">
-                    <div 
-                      className="w-full h-40 rounded-lg overflow-hidden relative shadow-inner flex items-center justify-center text-white"
-                      style={{ background: item.imageBg }}
-                    >
-                      <div className="text-center p-3">
-                        <Camera className="w-6 h-6 mx-auto text-amber-300 opacity-80 mb-1" />
-                        <span className="text-[11px] font-mono text-stone-300 uppercase block">{item.category}</span>
-                        <span className="text-xs font-bold text-white leading-tight">{item.title}</span>
-                      </div>
+                    <div className="w-full h-44 rounded-xl overflow-hidden relative shadow-inner bg-stone-900">
+                      {item.imageSrc ? (
+                        <Image
+                          src={item.imageSrc}
+                          alt={item.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      ) : (
+                        <div 
+                          className="w-full h-full flex items-center justify-center text-white"
+                          style={{ background: item.imageBg }}
+                        >
+                          <Camera className="w-6 h-6 text-amber-300 opacity-80" />
+                        </div>
+                      )}
 
-                      <div className="absolute bottom-2 right-2 bg-black/60 px-2 py-0.5 rounded text-[9px] font-mono text-stone-300">
+                      <div className="absolute bottom-2 right-2 bg-black/70 px-2 py-0.5 rounded text-[9px] font-mono text-stone-200 backdrop-blur-sm">
                         {item.date}
                       </div>
                     </div>
@@ -263,7 +275,7 @@ export default function PinboardGallery() {
                       <span className="text-[10px] font-mono text-stone-600">{item.date}</span>
                     </div>
 
-                    <h4 className="font-bold text-stone-950 text-sm leading-tight">
+                    <h4 className="font-bold text-stone-950 text-sm leading-tight font-serif">
                       {item.title}
                     </h4>
 
@@ -279,19 +291,24 @@ export default function PinboardGallery() {
 
                 {isSwatch && (
                   <div className="space-y-3">
-                    <div 
-                      className="w-full h-32 rounded-xl border border-white/20 shadow-md relative overflow-hidden flex items-end p-2"
-                      style={{ background: item.imageBg }}
-                    >
-                      <div className="bg-black/70 px-2 py-1 rounded text-[10px] font-mono text-amber-300">
+                    <div className="w-full h-36 rounded-xl border border-white/20 shadow-md relative overflow-hidden bg-stone-900 flex items-end p-2">
+                      {item.imageSrc && (
+                        <Image
+                          src={item.imageSrc}
+                          alt={item.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      )}
+                      <div className="relative z-10 bg-black/80 px-2 py-1 rounded text-[10px] font-mono text-amber-300 backdrop-blur-sm">
                         Swatched in Dhaka Atelier
                       </div>
                     </div>
 
                     <div className="space-y-1">
-                      <span className="text-[10px] font-mono uppercase text-amber-400 block">{item.category}</span>
-                      <h4 className="font-bold text-white text-sm">{item.title}</h4>
-                      <p className="text-xs text-stone-400 line-clamp-2">{item.noteText}</p>
+                      <span className="text-[10px] font-mono uppercase text-[#E0B27A] block">{item.category}</span>
+                      <h4 className="font-bold text-white text-sm font-serif">{item.title}</h4>
+                      <p className="text-xs text-[#D6CFC7] line-clamp-2">{item.noteText}</p>
                     </div>
                   </div>
                 )}
@@ -299,14 +316,14 @@ export default function PinboardGallery() {
                 {item.type === "techcard" && (
                   <div className="space-y-3">
                     <div 
-                      className="w-full h-32 rounded-xl border border-orange-500/30 p-3 flex flex-col justify-between"
+                      className="w-full h-36 rounded-xl border border-amber-500/30 p-3 flex flex-col justify-between"
                       style={{ background: item.imageBg }}
                     >
-                      <span className="text-[10px] font-mono text-orange-400 font-bold uppercase">TECH-PACK SPEC</span>
-                      <span className="text-xs font-bold text-white">{item.title}</span>
+                      <span className="text-[10px] font-mono text-amber-400 font-bold uppercase">TECH-PACK SPEC</span>
+                      <span className="text-xs font-bold text-white font-serif">{item.title}</span>
                     </div>
-                    <p className="text-xs text-stone-300 leading-relaxed">{item.noteText}</p>
-                    <span className="text-[10px] font-mono text-stone-500 block">— {item.author}</span>
+                    <p className="text-xs text-[#D6CFC7] leading-relaxed">{item.noteText}</p>
+                    <span className="text-[10px] font-mono text-[#A59E95] block">— {item.author}</span>
                   </div>
                 )}
               </div>
@@ -317,11 +334,11 @@ export default function PinboardGallery() {
 
       {activeModalItem && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200"
           onClick={() => setActiveModalItem(null)}
         >
           <div 
-            className="relative max-w-lg w-full bg-stone-900 border border-white/20 rounded-3xl p-6 sm:p-8 text-stone-100 shadow-2xl space-y-4"
+            className="relative max-w-lg w-full bg-[#121A28] border border-white/20 rounded-3xl p-6 sm:p-8 text-stone-100 shadow-2xl space-y-4"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -331,29 +348,35 @@ export default function PinboardGallery() {
               <X className="w-5 h-5" />
             </button>
 
-            <div className="flex items-center gap-2 text-xs font-mono text-amber-400 uppercase">
+            <div className="flex items-center gap-2 text-xs font-mono text-[#E0B27A] uppercase">
               <Tag className="w-3.5 h-3.5" />
               <span>{activeModalItem.category} • {activeModalItem.date}</span>
             </div>
 
-            <h3 className="text-2xl font-bold text-white font-serif">
+            <h3 className="text-2xl font-serif font-bold text-white">
               {activeModalItem.title}
             </h3>
 
-            <div 
-              className="w-full h-48 rounded-2xl border border-white/15 shadow-inner flex items-center justify-center text-center p-4"
-              style={{ background: activeModalItem.imageBg }}
-            >
-              <p className="text-sm font-mono text-white/90 bg-black/60 px-4 py-2 rounded-xl backdrop-blur-sm">
-                Documented at Threadworks Studio Manufacturing Campus
-              </p>
+            <div className="w-full h-56 rounded-2xl border border-white/15 shadow-inner overflow-hidden relative bg-stone-900 flex items-center justify-center">
+              {activeModalItem.imageSrc ? (
+                <Image
+                  src={activeModalItem.imageSrc}
+                  alt={activeModalItem.title}
+                  fill
+                  className="object-cover"
+                />
+              ) : (
+                <p className="text-sm font-mono text-white/90 bg-black/60 px-4 py-2 rounded-xl backdrop-blur-sm">
+                  Documented at Threadworks Studio Manufacturing Campus
+                </p>
+              )}
             </div>
 
-            <p className="text-sm text-stone-300 leading-relaxed">
+            <p className="text-sm text-[#D6CFC7] leading-relaxed font-sans">
               {activeModalItem.noteText}
             </p>
 
-            <div className="pt-2 border-t border-white/10 flex justify-between items-center text-xs font-mono text-stone-400">
+            <div className="pt-2 border-t border-white/10 flex justify-between items-center text-xs font-mono text-[#A59E95]">
               <span>Author: <strong className="text-white">{activeModalItem.author}</strong></span>
               <span className="text-emerald-400">Verified Inspection Entry</span>
             </div>
