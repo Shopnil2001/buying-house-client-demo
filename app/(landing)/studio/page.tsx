@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import StudioCinematicReveal from "./components/StudioCinematicReveal";
-import SplineScroll3DScene from "./components/SplineScroll3DScene";
+import RealClothPhysicsEngine from "./components/RealClothPhysicsEngine";
 import StudioHeroBanner from "./components/StudioHeroBanner";
-import Spline3DFabricCanvas from "./components/Spline3DFabricCanvas";
+import CinematicParallaxMarquee from "./components/CinematicParallaxMarquee";
 import ScrollRevealSection from "./components/ScrollRevealSection";
 import LuxurySilkClothBanner from "./components/LuxurySilkClothBanner";
 import PinboardGallery from "./components/PinboardGallery";
@@ -29,8 +29,7 @@ import {
   Send,
   Droplets,
   Sun,
-  Feather,
-  Box
+  Feather
 } from "lucide-react";
 import { playTactileClick } from "@/components/SoundEffects";
 
@@ -68,12 +67,12 @@ export default function StudioLandingPage() {
   };
 
   return (
-    <div className="bg-[#080E17] text-[#FAF7F2] min-h-screen relative selection:bg-[#C26747]/30 selection:text-amber-200">
+    <div className="bg-[#080E17] text-[#FAF7F2] min-h-screen relative selection:bg-[#C26747]/30 selection:text-amber-200 overflow-x-hidden">
       {/* 1. Bespoke After-Effects Level Cinematic Opening */}
       <StudioCinematicReveal key={revealKey} />
 
-      {/* 2. Continuous Full-Page Spline 3D Scroll-Driven Parallax Engine */}
-      <SplineScroll3DScene />
+      {/* 2. Real Physical Hanging & Billowing Cloth Mesh Simulation Engine */}
+      <RealClothPhysicsEngine />
 
       {/* Floating Replay Intro Trigger */}
       <button
@@ -89,6 +88,9 @@ export default function StudioLandingPage() {
       <div className="relative z-10">
         <StudioHeroBanner />
       </div>
+
+      {/* DUAL-AXIS SCROLL-DRIVEN PARALLAX MARQUEE */}
+      <CinematicParallaxMarquee />
 
       {/* SECTION 2: ABOUT US */}
       <section id="about-us" className="relative z-10 py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10">
@@ -150,27 +152,7 @@ export default function StudioLandingPage() {
         </ScrollRevealSection>
       </section>
 
-      {/* SECTION 3: INTERACTIVE 3D SPLINE-LIKE SPATIAL TEXTILE ENGINE */}
-      <section id="spline-3d-visualizer" className="relative z-10 py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10 space-y-8">
-        <ScrollRevealSection direction="3d-tilt">
-          <div className="text-center max-w-3xl mx-auto space-y-4 mb-8">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#182335]/90 border border-amber-500/30 text-amber-200 text-xs font-mono uppercase tracking-widest backdrop-blur-md">
-              <Box className="w-3.5 h-3.5 text-amber-400" />
-              <span>Real-Time 3D Spatial Visualizer</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light text-[#FAF7F2] tracking-tight">
-              Interactive 3D Fabric & Yarn Morph Engine
-            </h2>
-            <p className="text-sm sm:text-base text-[#D6CFC7]">
-              Orbit and manipulate parametric silk knot sculptures, spinning yarn spools, and liquid cloth meshes in real-time 3D space with specular lighting and particle depth.
-            </p>
-          </div>
-
-          <Spline3DFabricCanvas />
-        </ScrollRevealSection>
-      </section>
-
-      {/* SECTION 4: OUR FEATURES */}
+      {/* SECTION 3: OUR FEATURES */}
       <section id="our-features" className="relative z-10 py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10">
         <ScrollRevealSection direction="3d-tilt">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
@@ -232,21 +214,21 @@ export default function StudioLandingPage() {
         </ScrollRevealSection>
       </section>
 
-      {/* SECTION 5: KEY FACTS & FIGURES */}
+      {/* SECTION 4: KEY FACTS & FIGURES */}
       <div className="relative z-10">
         <ScrollRevealSection direction="3d-tilt">
           <FactsFigures />
         </ScrollRevealSection>
       </div>
 
-      {/* SECTION 6: OUR PRODUCTS */}
+      {/* SECTION 5: OUR PRODUCTS */}
       <div className="relative z-10">
         <ScrollRevealSection direction="3d-tilt">
           <ProductCategoryShowcase />
         </ScrollRevealSection>
       </div>
 
-      {/* SECTION 7: OUR PHILOSOPHY (LUXURY SILK CLOTH BANNER) */}
+      {/* SECTION 6: OUR PHILOSOPHY (LUXURY SILK CLOTH BANNER) */}
       <section id="our-philosophy" className="relative z-10 py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10 space-y-12">
         <ScrollRevealSection direction="3d-tilt">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-10">
@@ -266,14 +248,14 @@ export default function StudioLandingPage() {
         </ScrollRevealSection>
       </section>
 
-      {/* SECTION 8: INSIGHTS (PINBOARD GALLERY WITH REAL HIGH-RES ASSETS) */}
+      {/* SECTION 7: INSIGHTS (PINBOARD GALLERY WITH REAL HIGH-RES ASSETS) */}
       <div className="relative z-10">
         <ScrollRevealSection direction="3d-tilt">
           <PinboardGallery />
         </ScrollRevealSection>
       </div>
 
-      {/* SECTION 9: TRUSTED CUSTOMERS / GLOBAL BRAND PARTNERS */}
+      {/* SECTION 8: TRUSTED CUSTOMERS / GLOBAL BRAND PARTNERS */}
       <section id="trusted-customers" className="relative z-10 py-28 px-4 sm:px-6 lg:px-8 bg-[#080E17]/80 border-t border-white/10 text-stone-100 backdrop-blur-sm">
         <ScrollRevealSection direction="3d-tilt">
           <div className="max-w-7xl mx-auto space-y-12">
@@ -313,7 +295,7 @@ export default function StudioLandingPage() {
         </ScrollRevealSection>
       </section>
 
-      {/* SECTION 10: SUSTAINABILITY & ESG (With Generative Floating Cotton Physics Canvas Background) */}
+      {/* SECTION 9: SUSTAINABILITY & ESG (With Generative Floating Cotton Physics Canvas Background) */}
       <section id="sustainability" className="relative z-10 py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10 overflow-hidden rounded-3xl my-8 bg-[#09140D]/90 backdrop-blur-md shadow-2xl">
         {/* Generative Floating Cotton Background Animation */}
         <ESGBackgroundCottonCanvas />
@@ -379,7 +361,7 @@ export default function StudioLandingPage() {
         </ScrollRevealSection>
       </section>
 
-      {/* SECTION 11: CONTACT US / INQUIRY */}
+      {/* SECTION 10: CONTACT US / INQUIRY */}
       <section id="contact-us" className="relative z-10 py-28 px-4 sm:px-6 lg:px-8 bg-[#080E17]/80 border-t border-white/10 text-stone-100 backdrop-blur-sm">
         <ScrollRevealSection direction="3d-tilt">
           <div className="max-w-7xl mx-auto space-y-12">
