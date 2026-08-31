@@ -6,8 +6,8 @@ import AtmosphericWorldBackground from "@/components/visualizer/AtmosphericWorld
 import SmoothScrollProvider from "@/components/visualizer/SmoothScrollProvider";
 import SpatialVisualizer from "@/components/visualizer/SpatialVisualizer";
 import Studio3DCard from "@/components/visualizer/Studio3DCard";
+import ChoreographedSection from "@/components/visualizer/ChoreographedSection";
 import StudioHeroBanner from "./components/StudioHeroBanner";
-import SectionTransitionWrapper from "./components/SectionTransitionWrapper";
 import LoomWeave3D from "./components/LoomWeave3D";
 import CinematicParallaxMarquee from "./components/CinematicParallaxMarquee";
 import LuxurySilkClothBanner from "./components/LuxurySilkClothBanner";
@@ -89,19 +89,19 @@ export default function StudioLandingPage() {
           <span>Replay Intro FX</span>
         </button>
 
-        {/* SECTION 1: HERO BANNER (With Cinematic Parallax Macro Silk & Fluid Waves) */}
-        <SectionTransitionWrapper variant="silk-reveal">
+        {/* TRANSITION 1: HERO -> PUSH-THROUGH (Hero scales down and recedes as camera pushes into 3D scene) */}
+        <ChoreographedSection type="hero-push-through">
           <StudioHeroBanner />
-        </SectionTransitionWrapper>
+        </ChoreographedSection>
 
-        {/* SECTION 2: 3D SPATIAL VISUALIZER HERO MOMENT (R3F + GSAP Pinned Scroll Choreography) */}
+        {/* TRANSITION 2: 3D SPATIAL VISUALIZER HERO MOMENT (R3F Pinned 220% Scroll Choreography) */}
         <SpatialVisualizer />
 
         {/* DUAL-AXIS SCROLL-DRIVEN PARALLAX MARQUEE */}
         <CinematicParallaxMarquee />
 
-        {/* SECTION 3: ABOUT US (With Interactive Loom Weaving 3D Grid & 3D Glass Cards) */}
-        <SectionTransitionWrapper id="about-us" variant="zoom-depth" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        {/* TRANSITION 3: 3D VISUALIZER -> VERTICAL ECOSYSTEM (Horizontal slide & curtain reveal) */}
+        <ChoreographedSection id="about-us" type="visualizer-horizontal-slide" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 space-y-6">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#142030]/90 border border-amber-500/30 text-amber-300 text-xs font-mono uppercase tracking-widest backdrop-blur-md shadow-xl">
@@ -163,10 +163,10 @@ export default function StudioLandingPage() {
               </Studio3DCard>
             </div>
           </div>
-        </SectionTransitionWrapper>
+        </ChoreographedSection>
 
-        {/* SECTION 4: OUR FEATURES (3D Glass Cards with Pointer-Following Tilt) */}
-        <SectionTransitionWrapper id="our-features" variant="zoom-depth" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        {/* TRANSITION 4: VERTICAL ECOSYSTEM -> SIX PILLARS (Signature 3D Book-Fold / Page-Turn) */}
+        <ChoreographedSection id="our-features" type="book-page-turn" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#182335]/90 border border-amber-500/30 text-[#E0B27A] text-xs font-mono uppercase tracking-widest backdrop-blur-md shadow-xl">
               <Zap className="w-3.5 h-3.5 text-[#E0B27A]" />
@@ -228,20 +228,20 @@ export default function StudioLandingPage() {
               </Studio3DCard>
             ))}
           </div>
-        </SectionTransitionWrapper>
+        </ChoreographedSection>
 
-        {/* SECTION 5: KEY FACTS & FIGURES */}
-        <SectionTransitionWrapper variant="silk-reveal">
+        {/* TRANSITION 5: SIX PILLARS -> KEY FACTS (Depth Pass-Behind glass transition) */}
+        <ChoreographedSection type="depth-pass-behind">
           <FactsFigures />
-        </SectionTransitionWrapper>
+        </ChoreographedSection>
 
-        {/* SECTION 6: OUR PRODUCTS */}
-        <SectionTransitionWrapper variant="zoom-depth">
+        {/* TRANSITION 6: KEY FACTS -> PRODUCT LINES (Vertical blind wipe reveal) */}
+        <ChoreographedSection type="vertical-blind-wipe">
           <ProductCategoryShowcase />
-        </SectionTransitionWrapper>
+        </ChoreographedSection>
 
-        {/* SECTION 7: OUR PHILOSOPHY (LUXURY SILK CLOTH BANNER) */}
-        <SectionTransitionWrapper id="our-philosophy" variant="silk-reveal" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
+        {/* TRANSITION 7: PRODUCT LINES -> CORE VALUES / LIQUID SILK (Diagonal Shard Split) */}
+        <ChoreographedSection id="our-philosophy" type="diagonal-shard-split" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-10">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#182335]/90 border border-amber-500/30 text-amber-200 text-xs font-mono uppercase tracking-widest backdrop-blur-md shadow-xl">
               <Leaf className="w-3.5 h-3.5 text-[#78A882]" />
@@ -256,52 +256,15 @@ export default function StudioLandingPage() {
           </div>
 
           <LuxurySilkClothBanner />
-        </SectionTransitionWrapper>
+        </ChoreographedSection>
 
         {/* SECTION 8: INSIGHTS (PINBOARD GALLERY WITH REAL HIGH-RES ASSETS) */}
-        <SectionTransitionWrapper variant="zoom-depth">
+        <ChoreographedSection type="parallax-lag-scale">
           <PinboardGallery />
-        </SectionTransitionWrapper>
+        </ChoreographedSection>
 
-        {/* SECTION 9: TRUSTED CUSTOMERS / GLOBAL BRAND PARTNERS */}
-        <SectionTransitionWrapper id="trusted-customers" variant="silk-reveal" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-          <div className="space-y-12">
-            <div className="text-center max-w-3xl mx-auto space-y-4">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#182335]/90 border border-amber-500/30 text-[#E0B27A] text-xs font-mono uppercase tracking-widest backdrop-blur-md shadow-xl">
-                <Globe2 className="w-3.5 h-3.5 text-[#E0B27A]" />
-                <span>Global Client Portfolio</span>
-              </div>
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif font-light text-[#FAF7F2] tracking-tight">
-                Trusted by World-Leading Apparel Brands
-              </h2>
-              <p className="text-sm sm:text-base text-[#D6CFC7]">
-                Delivering high-volume seasonal programs and quick-turn capsules to top retailers across Europe, North America, and Asia.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
-              {BRAND_PARTNERS.map((brand, i) => (
-                <Studio3DCard key={i} glowColor={brand.glow} className="text-center">
-                  <div className="space-y-2 py-2">
-                    <div className="text-xl sm:text-2xl font-serif font-bold tracking-wider text-white uppercase">
-                      {brand.name}
-                    </div>
-                    <div className="text-[11px] font-mono text-[#E0B27A]">
-                      {brand.tag}
-                    </div>
-                  </div>
-                </Studio3DCard>
-              ))}
-            </div>
-
-            <div className="p-4 rounded-2xl bg-black/40 border border-white/10 text-center text-xs font-mono text-[#A59E95] max-w-2xl mx-auto backdrop-blur-md shadow-xl">
-              ✓ 100% Social Audited • BSCI Grade A • WRAP Gold • Sedex SMETA • FairWear Verified
-            </div>
-          </div>
-        </SectionTransitionWrapper>
-
-        {/* SECTION 10: SUSTAINABILITY & ESG (With Generative Floating Cotton Physics Canvas Background) */}
-        <SectionTransitionWrapper id="sustainability" variant="zoom-depth" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden rounded-3xl my-8 bg-[#09140D]/95 backdrop-blur-md shadow-2xl">
+        {/* TRANSITION 8: CORE VALUES -> ESG / GREEN MILLS (Organic Color-Bleed Transition) */}
+        <ChoreographedSection id="sustainability" type="organic-color-bleed" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden rounded-3xl my-8 bg-[#09140D]/95 backdrop-blur-md shadow-2xl">
           {/* Generative Floating Cotton Background Animation */}
           <ESGBackgroundCottonCanvas />
 
@@ -370,10 +333,47 @@ export default function StudioLandingPage() {
               </Studio3DCard>
             </div>
           </div>
-        </SectionTransitionWrapper>
+        </ChoreographedSection>
 
-        {/* SECTION 11: CONTACT US / INQUIRY */}
-        <SectionTransitionWrapper id="contact-us" variant="zoom-depth" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        {/* TRANSITION 9: ESG -> CLIENT PORTFOLIO (Parallax Lag Scale) */}
+        <ChoreographedSection id="trusted-customers" type="parallax-lag-scale" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+          <div className="space-y-12">
+            <div className="text-center max-w-3xl mx-auto space-y-4">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#182335]/90 border border-amber-500/30 text-[#E0B27A] text-xs font-mono uppercase tracking-widest backdrop-blur-md shadow-xl">
+                <Globe2 className="w-3.5 h-3.5 text-[#E0B27A]" />
+                <span>Global Client Portfolio</span>
+              </div>
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif font-light text-[#FAF7F2] tracking-tight">
+                Trusted by World-Leading Apparel Brands
+              </h2>
+              <p className="text-sm sm:text-base text-[#D6CFC7]">
+                Delivering high-volume seasonal programs and quick-turn capsules to top retailers across Europe, North America, and Asia.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
+              {BRAND_PARTNERS.map((brand, i) => (
+                <Studio3DCard key={i} glowColor={brand.glow} className="text-center">
+                  <div className="space-y-2 py-2">
+                    <div className="text-xl sm:text-2xl font-serif font-bold tracking-wider text-white uppercase">
+                      {brand.name}
+                    </div>
+                    <div className="text-[11px] font-mono text-[#E0B27A]">
+                      {brand.tag}
+                    </div>
+                  </div>
+                </Studio3DCard>
+              ))}
+            </div>
+
+            <div className="p-4 rounded-2xl bg-black/40 border border-white/10 text-center text-xs font-mono text-[#A59E95] max-w-2xl mx-auto backdrop-blur-md shadow-xl">
+              ✓ 100% Social Audited • BSCI Grade A • WRAP Gold • Sedex SMETA • FairWear Verified
+            </div>
+          </div>
+        </ChoreographedSection>
+
+        {/* TRANSITION 10: FINAL SECTION -> CONTACT / FOOTER (Settle & Land) */}
+        <ChoreographedSection id="contact-us" type="settle-land" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="space-y-12">
             <div className="text-center max-w-3xl mx-auto space-y-4">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#142030]/90 border border-amber-500/30 text-amber-300 text-xs font-mono uppercase tracking-wider backdrop-blur-md shadow-xl">
@@ -533,7 +533,7 @@ export default function StudioLandingPage() {
               </div>
             </div>
           </div>
-        </SectionTransitionWrapper>
+        </ChoreographedSection>
 
         {/* FOOTER */}
         <footer className="relative z-10 py-16 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-[#060A12]/95 text-[#A59E95] text-xs font-mono">
