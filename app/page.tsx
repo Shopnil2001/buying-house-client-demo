@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import StudioLandingPage from "./(landing)/studio/page";
 
 export default function RootPage() {
-  redirect("/studio");
+  return <StudioLandingPage />;
 }
